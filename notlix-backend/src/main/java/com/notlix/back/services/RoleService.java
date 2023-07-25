@@ -17,9 +17,9 @@ public class RoleService {
 		this.roleRepo = roleRepo;
 	}
 
-	/*public Role addRol(Role role) {
+	public Role addRol(Role role) {
 		return roleRepo.save(role);
-	}*/
+	}
 	
 	public List<Role> findAllRoles(){
 		return roleRepo.findAll();
@@ -31,6 +31,10 @@ public class RoleService {
 	
 	public Role findRoleByName(String name) {
 		return roleRepo.findRoleByName(name);
+	}
+	
+	public Role findRoleById(Long id) {
+		return roleRepo.findRoleById(id);
 	}
 	
 	/*public void deleteRoleById(Long id) {

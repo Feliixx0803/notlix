@@ -1,7 +1,10 @@
 package com.notlix.back.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,7 +16,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="User")
-public class User {
+public class User{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,12 +30,13 @@ public class User {
     private String name;
     private String pwd;
     
+    @JsonIgnore
     @ManyToOne
     private Role role;
-    
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private Collection<Task> tasks;
-    
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private Collection<Note> notes;
 	

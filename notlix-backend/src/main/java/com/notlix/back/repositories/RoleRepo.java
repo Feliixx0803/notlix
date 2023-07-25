@@ -6,4 +6,5 @@ import com.notlix.back.models.Role;
 
 public interface RoleRepo extends JpaRepository<Role, Long> {
 	Role findRoleByName(String name);
+	Role findRoleById(Long id);
 }

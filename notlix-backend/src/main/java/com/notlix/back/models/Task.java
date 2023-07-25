@@ -1,5 +1,7 @@
 package com.notlix.back.models;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,7 +12,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="Task")
-public class Task {
+public class Task implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
