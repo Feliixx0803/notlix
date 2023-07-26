@@ -51,10 +51,9 @@ public class TaskController {
 			User user = userService.findUserById(taskData.getUser().getId());
 			task.setUser(user);
 			task.setName(taskData.getName());
-			System.err.println("Usuario que tiene LA TAREA" + taskData.getUser());
 			
 			Task newTask = taskService.addTask(task);
-			System.err.println("NEWTASK" + newTask.getUser());
+			
 			return new ResponseEntity<String>("" + newTask,HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
