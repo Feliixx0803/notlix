@@ -6,16 +6,25 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
 import {NoPageFoundComponent} from "./errorPage/no-page-found/no-page-found.component";
+import { HomeComponent } from './components/home/home.component';
+import { RegisterComponent } from './components/register/register.component';
+
+import {AngularMatModule} from "./modules/angular-mat/angular-mat.module";
+import { NavbarComponent } from './ui-controls/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    NoPageFoundComponent
+    NoPageFoundComponent,
+    HomeComponent,
+    RegisterComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AngularMatModule,
     BrowserAnimationsModule
   ],
   providers: [],
