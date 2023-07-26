@@ -2,6 +2,9 @@ package com.notlix.back.models;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,18 +21,19 @@ public class Task implements Serializable{
     @Column(nullable = false, updatable = false)
 	private Long id;
 	
-	private String nombre;
+	private String name;
 	
 	@ManyToOne
+	@JsonBackReference
 	private User user;
 	
 	public Task() {
 	}
 
-	public Task(Long id, String nombre) {
+	public Task(Long id, String name) {
 		super();
 		this.id = id;
-		this.nombre = nombre;
+		this.name = name;
 	}
 
 	public Long getId() {
@@ -40,12 +44,12 @@ public class Task implements Serializable{
 		this.id = id;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getName() {
+		return name;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public User getUser() {

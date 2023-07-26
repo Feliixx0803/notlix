@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,14 +32,17 @@ public class User{
     private String name;
     private String pwd;
     
-    @JsonIgnore
     @ManyToOne
+    @JsonBackReference
     private Role role;
-    @JsonIgnore
+    
     @OneToMany(mappedBy = "user")
+    @JsonManagedReference
     private Collection<Task> tasks;
-    @JsonIgnore
+    
+    
     @OneToMany(mappedBy = "user")
+    @JsonManagedReference
     private Collection<Note> notes;
 	
     public User() {

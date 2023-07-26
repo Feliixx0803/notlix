@@ -65,12 +65,12 @@ public class RoleController {
 		return new ResponseEntity<Role> (role, HttpStatus.OK);
 	}
 	
-	@PutMapping("/update")
+	/*@PutMapping("/update")
 	public ResponseEntity<Role> updateRole(
 			@RequestBody Role role
 			){
 		Role roleUpdated = roleService.UpdateRole(role);
 		return new ResponseEntity<Role> (roleUpdated, HttpStatus.OK);
-	}
+	}*/
 
 }

@@ -2,6 +2,9 @@ package com.notlix.back.models;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,7 +24,9 @@ public class Note implements Serializable{
 	private String title;
 	private String content;
 	
+	
 	@ManyToOne
+	@JsonBackReference
 	private User user;
 	
 	

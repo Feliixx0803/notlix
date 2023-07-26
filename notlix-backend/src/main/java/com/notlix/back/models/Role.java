@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,8 +25,9 @@ public class Role{
 
     private String name;
     
-    @JsonIgnore
+    
     @OneToMany(mappedBy = "role")
+    @JsonManagedReference
     private Collection<User> users;
     
 
