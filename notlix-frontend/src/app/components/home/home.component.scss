@@ -1,0 +1,47 @@
+hr{
+  width: 95%;
+}
+
+.main-title{
+  font-family: "Soleil_Medium",Helvetica,Arial,sans-serif;
+  font-weight: bold;
+  font-size: 50px;
+  padding: 0 0 30px 0;
+  letter-spacing: 1px;
+}
+
+.main-description{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 80%;
+  background: lightblue;
+  align-items: center;
+  margin: 0 auto 40px;
+  padding: 40px 20px 20px 20px;
+
+
+  button{
+    max-width: 20%;
+    margin-bottom: 20px;
+  }
+
+  .images{
+    display: flex;
+    align-items: center;
+    margin:0 auto;
+
+    img{
+      width: 50%;
+    }
+  }
+}
+
+.notlix-features{
+  max-width: 90%;
+  background-color: crimson;
+  margin: 0 auto 40px;
+  padding: 50px 20px 20px 20px;
+
+}
+
