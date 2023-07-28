@@ -8,6 +8,8 @@ hr{
   font-size: 50px;
   padding: 0 0 30px 0;
   letter-spacing: 1px;
+  line-height: 40px;
+
 }
 
 .main-description{
@@ -22,9 +24,27 @@ hr{
 
 
   button{
-    max-width: 20%;
     margin-bottom: 20px;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    padding: 15px 80px;
+    border-radius: 5px;
   }
+
+  .registerBtn{
+    color:white;
+    background: blue;
+    transition: background 0.3s ease-in-out;
+  }
+
+  .registerBtn:hover {
+    background-color: #020293;
+  }
+
+  .loginBtn{
+    color: #020293;
+  }
+
 
   .images{
     display: flex;
@@ -34,6 +54,11 @@ hr{
     img{
       width: 50%;
     }
+  }
+
+  .subtitle{
+    font-size: 24px;
+    line-height: 40px;
   }
 }
 
@@ -52,10 +77,6 @@ hr{
 
 
   .features-grid {
-    /*display: grid;
-    grid-template-rows: auto auto;
-    grid-template-columns: auto auto;
-    gap: 10px;*/
     max-width: 50%;
     display: flex;
     flex-wrap: wrap;
