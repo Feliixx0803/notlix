@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { EventEmitterService } from './event-emitter.service';
+import { NavbarService } from './navbarService';
 
 describe('EventEmitterService', () => {
-  let service: EventEmitterService;
+  let service: NavbarService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(EventEmitterService);
+    service = TestBed.inject(NavbarService);
   });
 
   it('should be created', () => {

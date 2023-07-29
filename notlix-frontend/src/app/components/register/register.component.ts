@@ -1,19 +1,24 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {EventEmitterService} from "../../services/eventEmitter/event-emitter.service";
+import {NavbarService} from "../../services/navbarService/navbarService";
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnDestroy{
+export class RegisterComponent implements OnInit,OnDestroy{
 
-  constructor(private eventEmitter : EventEmitterService) {
-    this.eventEmitter.logEvent.emit({hideNavbar: true});
+  constructor(private navbarService : NavbarService) {
+  }
+
+  ngOnInit(): void {
+    this.navbarService.hide();
   }
 
   ngOnDestroy(): void {
-    this.eventEmitter.logEvent.emit({hideNavbar :false});
+    this.navbarService.show();
   }
+
+
 
 }

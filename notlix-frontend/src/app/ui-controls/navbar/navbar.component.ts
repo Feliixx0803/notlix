@@ -1,5 +1,5 @@
-import {Component, OnChanges, OnDestroy, OnInit} from '@angular/core';
-import {EventEmitterService} from "../../services/eventEmitter/event-emitter.service";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {NavbarService} from "../../services/navbarService/navbarService";
 import {Subscription} from "rxjs";
 
 @Component({
@@ -8,16 +8,16 @@ import {Subscription} from "rxjs";
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit,OnDestroy{
-  hideNavbar :boolean = false;
+  showNavbar :boolean = true;
   subscriptions :Subscription = new Subscription();
 
-  constructor(private eventEmitter :EventEmitterService) {
+  constructor(private navbarService :NavbarService) {
   }
 
   ngOnInit(): void {
-    this.subscriptions = this.eventEmitter.logEvent.subscribe((hideNavbar) =>{
-      this.hideNavbar = hideNavbar;
-    });
+    this.subscriptions = this.navbarService.showNavbar.subscribe((value) =>{
+      this.showNavbar = value;
+    })
   }
 
   ngOnDestroy(): void {
