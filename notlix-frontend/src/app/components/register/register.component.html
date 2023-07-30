@@ -1,1 +1,26 @@
-<p>register works!</p>
+<div class="container">
+  <h1 class="title">NOTLIX</h1>
+  <form [formGroup]="registerForm">
+    <mat-form-field>
+      <mat-label>Nombre de usuario</mat-label>
+      <input type="text" name="name" formControlName="name" matInput>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input type="email" name="email" formControlName="email" matInput>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Telefono de contacto</mat-label>
+      <input type="text" name="telephone" formControlName="telephone" matInput>
+    </mat-form-field>
+    <mat-form-field>
+    <mat-label>Contraseña</mat-label>
+    <input matInput [type]="hidePwd ? 'password' : 'text'" formControlName="pwd">
+    <button mat-icon-button matSuffix (click)="hidePwd = !hidePwd" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePwd">
+      <mat-icon>{{hidePwd ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+    <button [disabled]="registerForm.invalid" (click)="register()">Registrarse</button>
+  </form>
+
+</div>

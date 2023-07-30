@@ -5,5 +5,7 @@
   </button>
   <span>NOTLIX</span>
   <span class="spacer"></span>
-  <button routerLink="/login">Iniciar sesión</button>
+  <button routerLink="/login" *ngIf="!userLogged">Iniciar sesión</button>
+  <button *ngIf="userLogged" (click)="logout()">Cerrar sesión</button>
+
 </mat-toolbar>

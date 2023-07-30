@@ -11,6 +11,7 @@ import { RegisterComponent } from './components/register/register.component';
 
 import {AngularMatModule} from "./modules/angular-mat/angular-mat.module";
 import { NavbarComponent } from './ui-controls/navbar/navbar.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { NavbarComponent } from './ui-controls/navbar/navbar.component';
     BrowserModule,
     AppRoutingModule,
     AngularMatModule,
+    HttpClientModule,
     BrowserAnimationsModule
   ],
   providers: [],
