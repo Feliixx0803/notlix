@@ -20,13 +20,22 @@ export class NavbarComponent implements OnInit,OnDestroy{
     //Show navbar
     this.subscriptions = this.navbarService.showNavbar.subscribe((value) =>{
       this.showNavbar = value;
+      console.log(value);
     })
 
     //Control if user is logged
     this.userService.userLogged.subscribe((isLogged :boolean) =>{
       this.userLogged = isLogged;
-      console.log(isLogged);
+      console.log("log",isLogged);
     })
+
+    //If we reload the page, angular will restart the state of components and services.
+    //So we check if there's still a user logged with localStore and reassign userLogged's value
+    if(localStorage.getItem('user')){
+      this.userLogged = true;
+    }
+
+
 
   }
 

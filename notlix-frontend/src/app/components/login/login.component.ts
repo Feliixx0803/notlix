@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit, OnDestroy{
     return this.loginForm.get('pwd');
   }
 
-  async login(){
+  login(){
     let email = this.email?.value;
     let pwd = this.pwd?.value;
 
@@ -60,7 +60,6 @@ export class LoginComponent implements OnInit, OnDestroy{
         console.log(response.name);
         localStorage.setItem('user', response.name);
         this.userService.userLogged.next(true);
-
         this.router.navigate(["/home"]);
       },
       (error) => console.error("Error al hacer el login: ", error),

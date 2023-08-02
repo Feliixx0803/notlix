@@ -12,6 +12,8 @@ import { RegisterComponent } from './components/register/register.component';
 import {AngularMatModule} from "./modules/angular-mat/angular-mat.module";
 import { NavbarComponent } from './ui-controls/navbar/navbar.component';
 import {HttpClientModule} from "@angular/common/http";
+import { CardComponent } from './components/card/card.component';
+import { TaskComponent } from './components/task/task.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import {HttpClientModule} from "@angular/common/http";
     NoPageFoundComponent,
     HomeComponent,
     RegisterComponent,
-    NavbarComponent
+    NavbarComponent,
+    CardComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,
