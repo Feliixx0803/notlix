@@ -1,7 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NavbarService} from "../../services/navbarService/navbarService";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {UserDTO} from "../../models/DTO/user-dto";
 import {UserService} from "../../services/userService/user.service";
@@ -18,7 +17,6 @@ export class LoginComponent implements OnInit, OnDestroy{
 
   constructor(private navbarService : NavbarService,
               private formBuilder :FormBuilder,
-              private http :HttpClient,
               private router :Router,
               private userService :UserService
   ) {
@@ -48,7 +46,7 @@ export class LoginComponent implements OnInit, OnDestroy{
     return this.loginForm.get('pwd');
   }
 
-  login(){
+  async login(){
     let email = this.email?.value;
     let pwd = this.pwd?.value;
 
@@ -57,7 +55,7 @@ export class LoginComponent implements OnInit, OnDestroy{
       pwd: pwd
     }
 
-    this.http.post<UserDTO>('http://localhost:8080/login', body, {responseType: 'json'}).subscribe(
+    this.userService.login(body).subscribe(
       (response) => {
         console.log(response.name);
         localStorage.setItem('user', response.name);
@@ -67,7 +65,8 @@ export class LoginComponent implements OnInit, OnDestroy{
       },
       (error) => console.error("Error al hacer el login: ", error),
       ()=> console.info("Fin login usuario")
-    );
+    )
+
   }
 
 

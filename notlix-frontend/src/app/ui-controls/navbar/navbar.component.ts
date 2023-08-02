@@ -17,10 +17,12 @@ export class NavbarComponent implements OnInit,OnDestroy{
   }
 
   ngOnInit(): void {
+    //Show navbar
     this.subscriptions = this.navbarService.showNavbar.subscribe((value) =>{
       this.showNavbar = value;
     })
 
+    //Control if user is logged
     this.userService.userLogged.subscribe((isLogged :boolean) =>{
       this.userLogged = isLogged;
       console.log(isLogged);

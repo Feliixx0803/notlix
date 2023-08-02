@@ -3,6 +3,7 @@ import {NavbarService} from "../../services/navbarService/navbarService";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {UserService} from "../../services/userService/user.service";
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,8 @@ export class RegisterComponent implements OnInit,OnDestroy{
   constructor(private navbarService : NavbarService,
               private formBuilder: FormBuilder,
               public http :HttpClient,
-              private router: Router
+              private router: Router,
+              private userService :UserService
   ) {
   }
 
@@ -67,8 +69,7 @@ export class RegisterComponent implements OnInit,OnDestroy{
       pwd: pwd
     }
 
-
-    this.http.post('http://localhost:8080/register', body, { 'responseType': 'text' }).subscribe(
+    this.userService.register(body).subscribe(
       (response) => this.router.navigate(["/login"]),
       (error) => console.log("Error al registrar usuario"),
       ()=> console.info("Fin registro usuario")
