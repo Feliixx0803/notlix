@@ -30,6 +30,7 @@ public class LoginController {
 		User user = userService.findUserByEmail(userData.getEmail());
 		UserDTO userDTO = new UserDTO();
 		userDTO.setName(user.getName());
+		userDTO.setEmail(user.getEmail());
 		
 		if(userDTO.getName() == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

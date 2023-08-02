@@ -1,5 +1,6 @@
 package com.notlix.back.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.notlix.back.dtos.NoteDTO;
+import com.notlix.back.models.Note;
 import com.notlix.back.models.Role;
 import com.notlix.back.models.User;
 import com.notlix.back.services.RoleService;
@@ -90,5 +93,17 @@ public class UserController {
 			){
 		userService.deleteUserById(id);
 		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@GetMapping("/getUserNotes/{email}")
+	public ResponseEntity<List<NoteDTO>> getUserNotes(
+			@PathVariable("email") String email){
+		User user = userService.findUserByEmail(email);
+		List<NoteDTO> NotesList = new ArrayList<>();
+		
+		for(Note n :user.getNotes()) {
+			NotesList.add(new NoteDTO(n.getTitle(),n.getContent()));
+		}
+		return new ResponseEntity<>(NotesList,HttpStatus.OK);
 	}
 }
