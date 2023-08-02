@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NavbarService} from "../../services/navbarService/navbarService";
 import {Subscription} from "rxjs";
-import {UserService} from "../../services/userService/user.service";
+import {AuthService} from "../../services/authService/auth.service";
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit,OnDestroy{
   subscriptions :Subscription = new Subscription();
   userLogged: boolean = false;
 
-  constructor(private navbarService :NavbarService, private userService :UserService) {
+  constructor(private navbarService :NavbarService, private userService :AuthService) {
   }
 
   ngOnInit(): void {

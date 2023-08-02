@@ -3,7 +3,7 @@ import {NavbarService} from "../../services/navbarService/navbarService";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {UserService} from "../../services/userService/user.service";
+import {AuthService} from "../../services/authService/auth.service";
 
 @Component({
   selector: 'app-register',
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit,OnDestroy{
               private formBuilder: FormBuilder,
               public http :HttpClient,
               private router: Router,
-              private userService :UserService
+              private userService :AuthService
   ) {
   }
 

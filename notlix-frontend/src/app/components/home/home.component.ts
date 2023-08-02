@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {UserService} from "../../services/userService/user.service";
+import {AuthService} from "../../services/authService/auth.service";
 import {Subscription} from "rxjs";
 
 @Component({
@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit, OnDestroy{
   subscription :Subscription = new Subscription();
   userLogged = false;
 
-  constructor(private userService :UserService) {
+  constructor(private userService :AuthService) {
   }
 
   ngOnInit(): void {

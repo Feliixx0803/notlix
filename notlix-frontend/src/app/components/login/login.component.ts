@@ -3,7 +3,7 @@ import {NavbarService} from "../../services/navbarService/navbarService";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 import {UserDTO} from "../../models/DTO/user-dto";
-import {UserService} from "../../services/userService/user.service";
+import {AuthService} from "../../services/authService/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit, OnDestroy{
   constructor(private navbarService : NavbarService,
               private formBuilder :FormBuilder,
               private router :Router,
-              private userService :UserService
+              private userService :AuthService
   ) {
   }
 
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit, OnDestroy{
     this.userService.login(body).subscribe(
       (response) => {
         console.log(response.name);
-        localStorage.setItem('user', response.name);
+        localStorage.setItem('user', response.email);
         this.userService.userLogged.next(true);
         this.router.navigate(["/home"]);
       },

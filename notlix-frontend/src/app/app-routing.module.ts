@@ -4,7 +4,7 @@ import {NoPageFoundComponent} from "./errorPage/no-page-found/no-page-found.comp
 import {LoginComponent} from "./components/login/login.component";
 import {HomeComponent} from "./components/home/home.component";
 import {RegisterComponent} from "./components/register/register.component";
-import {CardComponent} from "./components/card/card.component";
+import {NoteComponent} from "./components/note/note.component";
 import {TaskComponent} from "./components/task/task.component";
 
 const routes: Routes = [
@@ -12,7 +12,7 @@ const routes: Routes = [
   {path:"home", component:HomeComponent},
   {path:"login", component:LoginComponent},
   {path:"register", component:RegisterComponent},
-  {path:"notes", component:CardComponent},
+  {path:"notes", component:NoteComponent},
   {path:"tasks", component:TaskComponent},
   { path: "error", component:NoPageFoundComponent},
   { path: "**", redirectTo: "error", pathMatch: 'full'},

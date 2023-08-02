@@ -8,7 +8,7 @@
   <button routerLink="/login" *ngIf="!userLogged">Iniciar sesión</button>
   <button *ngIf="userLogged" routerLink="/notes">Mis notas</button>
   <button *ngIf="userLogged" routerLink="/tasks">Mis tareas</button>
-  <button *ngIf="userLogged" (click)="logout()">Cerrar sesión</button>
+  <button routerLink="/home" *ngIf="userLogged" (click)="logout()">Cerrar sesión</button>
 
 
 </mat-toolbar>

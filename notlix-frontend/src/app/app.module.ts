@@ -12,7 +12,7 @@ import { RegisterComponent } from './components/register/register.component';
 import {AngularMatModule} from "./modules/angular-mat/angular-mat.module";
 import { NavbarComponent } from './ui-controls/navbar/navbar.component';
 import {HttpClientModule} from "@angular/common/http";
-import { CardComponent } from './components/card/card.component';
+import { NoteComponent } from './components/note/note.component';
 import { TaskComponent } from './components/task/task.component';
 
 @NgModule({
@@ -23,7 +23,7 @@ import { TaskComponent } from './components/task/task.component';
     HomeComponent,
     RegisterComponent,
     NavbarComponent,
-    CardComponent,
+    NoteComponent,
     TaskComponent
   ],
   imports: [
