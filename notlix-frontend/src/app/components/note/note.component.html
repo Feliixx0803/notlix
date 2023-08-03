@@ -1,5 +1,24 @@
-<span>
-  <div *ngFor="let note of notes">
-    {{note.content}} {{note.title}}
-  </div>
-</span>
+<aside id="notesList">
+  <!--Search -->
+    <div class="searchField">
+      <input type="search" placeholder="Busca tus notas por titulo" spellcheck="false">
+    </div>
+
+  <!--Notes in the left panel-->
+ <div *ngIf="notes.length; else noNotes">
+    <div class="notesTitle" *ngFor="let n of notes">
+      <button>{{n.title}}</button>
+    </div>
+ </div>
+  <ng-template #noNotes>
+    <div class="notesTitle">
+      <button>No hay notas, crea una. (PROVISIONAL)</button>
+    </div>
+  </ng-template>
+</aside>
+
+<div class="mainContent">
+
+</div>
+
+

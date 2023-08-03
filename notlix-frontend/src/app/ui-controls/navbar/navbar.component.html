@@ -1,14 +1,35 @@
+<nav *ngIf="showNavbar" class="navbar navbar-expand-md p-4">
+  <div class="container-fluid">
+    <button routerLink="/home">NOTLIX</button>
 
-<mat-toolbar *ngIf="showNavbar">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>NOTLIX</span>
-  <span class="spacer"></span>
-  <button routerLink="/login" *ngIf="!userLogged">Iniciar sesión</button>
-  <button *ngIf="userLogged" routerLink="/notes">Mis notas</button>
-  <button *ngIf="userLogged" routerLink="/tasks">Mis tareas</button>
-  <button routerLink="/home" *ngIf="userLogged" (click)="logout()">Cerrar sesión</button>
+    <!--Menu btn-->
+    <button class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#menu"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!--collapsible menu buttons-->
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto">
+        <ng-container *ngIf="userLogged">
+          <li class="nav-item me-4 mt-md-0 mt-sm-2">
+            <button routerLink="/notes">Mis notas</button>
+          </li>
+          <li class="nav-item me-4 mt-md-0 mt-sm-2">
+            <button routerLink="/tasks">Mis tareas</button>
+          </li>
+          <li class="nav-item me-4 mt-md-0 mt-sm-2">
+            <button routerLink="/home" (click)="logout()">Cerrar sesión</button>
+          </li>
+        </ng-container>
 
-
-</mat-toolbar>
+        <li class="nav-item">
+          <button routerLink="/login" *ngIf="!userLogged">Iniciar sesión</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

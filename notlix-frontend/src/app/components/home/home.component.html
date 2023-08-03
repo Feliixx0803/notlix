@@ -1,17 +1,21 @@
-<div class="container">
+<div class="main-container">
   <div class="main-description">
     <h1 class="main-title">
       Domina tus pensamientos, organiza tu trabajo
     </h1>
     <p class="subtitle">Recuérdalo todo con tus notas y organízate de manera óptima con nuestro apartado de tareas pendientes.</p>
 
-    <button *ngIf="!userLogged" routerLink="/register" class="registerBtn">Regístrate ahora mismo</button>
-    <button *ngIf="!userLogged" routerLink="/login" class="loginBtn">
-      <u>¿Tienes una cuenta? Inicia sesión</u>
-    </button>
+    <ng-container *ngIf="!userLogged">
+      <button routerLink="/register" class="registerBtn">Regístrate ahora mismo</button>
+      <button routerLink="/login" class="loginBtn">
+        <u>¿Tienes una cuenta? Inicia sesión</u>
+      </button>
+    </ng-container>
 
-    <button *ngIf="userLogged" routerLink="/notes">Mis notas</button>
-    <button *ngIf="userLogged" routerLink="/tasks">Mis tareas</button>
+    <ng-container *ngIf="userLogged">
+      <button routerLink="/notes">Mis notas</button>
+      <button routerLink="/tasks">Mis tareas</button>
+    </ng-container>
 
     <div class="images">
       <img src="assets/notes1.png" alt="Imagen bloc de notas" />

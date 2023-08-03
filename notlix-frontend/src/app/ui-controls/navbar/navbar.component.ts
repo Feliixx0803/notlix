@@ -34,9 +34,6 @@ export class NavbarComponent implements OnInit,OnDestroy{
     if(localStorage.getItem('user')){
       this.userLogged = true;
     }
-
-
-
   }
 
   ngOnDestroy(): void {
