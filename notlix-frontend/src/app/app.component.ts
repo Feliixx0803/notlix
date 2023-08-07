@@ -1,4 +1,6 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {RoleService} from "./services/roleService/role.service";
+import {lastValueFrom} from "rxjs";
 
 
 @Component({
@@ -6,10 +8,26 @@ import {Component, OnDestroy} from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent{
+export class AppComponent implements OnInit{
   title = 'notlix-frontend';
 
-  constructor() {
+  constructor(private roleService :RoleService) {
+  }
+
+  ngOnInit(): void {
+    this.verifyRoles();
+  }
+
+
+  /**
+   * Checks if user and admin roles exists. If not, it creates them.
+   */
+  async verifyRoles(){
+    await lastValueFrom(this.roleService.getAllRoles().pipe()).then((roles) => {
+      if(!roles.length){
+        this.roleService.createRoles().subscribe();
+      }
+    });
   }
 
 }
