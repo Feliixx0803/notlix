@@ -2,7 +2,7 @@ package com.notlix.back.controllers;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;import org.springframework.core.task.TaskDecorator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -58,6 +58,14 @@ public class NoteController {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
+	
+	
+	@GetMapping("/findNoteByTitle/{title}")
+	public ResponseEntity<Note> findIdByTitle(@PathVariable("title") String title){
+		Note note = noteService.findNoteByTitle(title);
+		return new ResponseEntity<>(note, HttpStatus.OK);
+	}
+	
 		
 	@PutMapping("/update/{id}")
 	public ResponseEntity<Note> updateNote(

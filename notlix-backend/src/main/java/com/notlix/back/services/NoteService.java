@@ -38,4 +38,9 @@ public class NoteService {
 		noteRepo.deleteById(id);
 	}
 
+
+	public Note findNoteByTitle(String title) {
+		return noteRepo.findNoteByTitle(title);
+	}
+
 }

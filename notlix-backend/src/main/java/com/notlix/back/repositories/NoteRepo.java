@@ -12,4 +12,5 @@ import com.notlix.back.models.Note;
  */
 public interface NoteRepo extends JpaRepository<Note, Long> {
 	Note findNoteById(Long id);
+	Note findNoteByTitle(String title);
 }

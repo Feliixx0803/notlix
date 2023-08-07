@@ -21,7 +21,9 @@ public class Note implements Serializable{
     @Column(nullable = false, updatable = false)
     private Long id;
 	
+	@Column(unique = true)
 	private String title;
+	
 	 @Column(columnDefinition = "LONGTEXT")
 	private String content;
 	
