@@ -6,11 +6,11 @@
       </div>
 
     <!--Notes in the left panel-->
-   <div *ngIf="notes.length; else noNotes">
+   <ng-container *ngIf="notes.length; else noNotes">
       <div class="notesTitle" *ngFor="let n of notes">
         <button (click)="openSelectedNote(n.title)">{{n.title}}</button>
       </div>
-   </div>
+   </ng-container>
     <ng-template #noNotes>
       <div class="notesTitle">
         <button>No hay notas, crea una. (PROVISIONAL)</button>

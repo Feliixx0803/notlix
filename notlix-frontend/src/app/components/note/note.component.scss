@@ -1,46 +1,4 @@
 
-/*#aside{
-  background-color: gray;
-  min-width: 20%;
-  max-width: 25%;
-  height: 100%;
-  position: absolute;
-  float: left;
-
-  .notesTitle{
-    width: 100%;
-    height: 64px;
-    background-color: lightblue;
-    display: flex;
-    border-bottom: 1px solid black;
-    padding-left: 10px;
-
-    button{
-      overflow: hidden;
-      padding: 9px 0;
-    }
-  }
-
-  .searchField {
-    padding: 6px 5px 5px 14px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    input {
-      //Establecer estilos
-      width: 85%;
-      overflow: hidden;
-
-    }
-  }
-  .mainContent{
-
-    background-color: red;
-  }
-}*/
-
 .mainContainer {
   display: flex;
   height: 100%;
@@ -63,6 +21,7 @@
       button {
         overflow: hidden;
         padding: 9px 0;
+
       }
     }
 
@@ -82,9 +41,8 @@
     }
   }
   .mainContent {
-    background-color: yellow;
     flex: 70%;
     max-width: 80%;
-    overflow: hidden;
+
   }
 }
