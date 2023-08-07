@@ -13,7 +13,7 @@ import {NoteService} from "../../services/noteService/note.service";
 export class NoteComponent implements OnInit, OnDestroy{
   subscription :Subscription = new Subscription();
   notes :NoteDTO[] = [];
-  selectedNote? :NoteDTO;
+  selectedNoteContent? :string;
   isSelected :boolean = false;
 
   constructor(private http :HttpClient,
@@ -40,7 +40,15 @@ export class NoteComponent implements OnInit, OnDestroy{
   }
 
   async openSelectedNote(title: string) {
-     this.selectedNote = await lastValueFrom(this.notesService.findNoteByTitle(title));
+     let note = await lastValueFrom(this.notesService.findNoteByTitle(title));
+     this.selectedNoteContent = this.getFormattedContent(note.content);
      this.isSelected = true;
+
+  }
+
+  //To give note`s content a format suitable for rendering in HTML
+  getFormattedContent(content :string) : string{
+    const formattedContent = content.replace(/\r\n/g, '<br />');
+    return formattedContent;
   }
 }

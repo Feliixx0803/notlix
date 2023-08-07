@@ -20,8 +20,7 @@
 
   <div class="mainContent">
     <ng-container *ngIf="isSelected">
-      {{selectedNote?.title}}
-      {{selectedNote?.content}}
+      <p [innerHTML]="selectedNoteContent"></p>
     </ng-container>
   </div>
  </div>
