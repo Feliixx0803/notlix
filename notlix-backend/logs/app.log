@@ -236,3 +236,12 @@
 2023-08-08 16:53:52.286 ERROR [http-nio-8080-exec-6] org.hibernate.engine.jdbc.spi.SqlExceptionHelper - Duplicate entry 'Pruebaa' for key 'UK_f86y3cwopeyu88j7897795xj4'
 2023-08-08 16:54:06.580 WARN  [http-nio-8080-exec-2] org.hibernate.engine.jdbc.spi.SqlExceptionHelper - SQL Error: 1062, SQLState: 23000
 2023-08-08 16:54:06.580 ERROR [http-nio-8080-exec-2] org.hibernate.engine.jdbc.spi.SqlExceptionHelper - Duplicate entry 'Pruebaa' for key 'UK_f86y3cwopeyu88j7897795xj4'
+2023-08-08 16:55:42.021 INFO  [RMI TCP Connection(17)-127.0.0.1] org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2023-08-08 16:55:42.036 INFO  [RMI TCP Connection(17)-127.0.0.1] org.apache.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2023-08-08 16:55:42.036 INFO  [RMI TCP Connection(17)-127.0.0.1] org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2023-08-08 16:55:42.043 INFO  [RMI TCP Connection(17)-127.0.0.1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-08-08 16:55:42.043 INFO  [RMI TCP Connection(17)-127.0.0.1] org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2023-08-08 16:55:42.051 INFO  [RMI TCP Connection(17)-127.0.0.1] org.apache.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8080"]
+2023-08-08 16:55:42.051 INFO  [RMI TCP Connection(17)-127.0.0.1] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-08 16:55:42.051 INFO  [RMI TCP Connection(17)-127.0.0.1] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-08-08 16:55:42.051 INFO  [RMI TCP Connection(17)-127.0.0.1] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

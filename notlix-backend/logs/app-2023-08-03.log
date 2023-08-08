@@ -1,0 +1,73 @@
+2023-08-03 15:27:26.944 INFO  [main] com.notlix.back.NotlixBackendApplication - Starting NotlixBackendApplication using Java 17.0.7 with PID 10848 (C:\Users\sukit\OneDrive\Escritorio\notlix\notlix-backend\target\classes started by sukit in C:\Users\sukit\OneDrive\Escritorio\notlix\notlix-backend)
+2023-08-03 15:27:26.963 INFO  [main] com.notlix.back.NotlixBackendApplication - No active profile set, falling back to 1 default profile: "default"
+2023-08-03 15:27:27.632 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-03 15:27:27.707 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 66 ms. Found 4 JPA repository interfaces.
+2023-08-03 15:27:28.307 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-08-03 15:27:28.321 INFO  [main] org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-08-03 15:27:28.324 INFO  [main] org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-08-03 15:27:28.324 INFO  [main] org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.10]
+2023-08-03 15:27:28.458 INFO  [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-08-03 15:27:28.459 INFO  [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1441 ms
+2023-08-03 15:27:28.669 INFO  [main] org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-03 15:27:28.729 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.5.Final
+2023-08-03 15:27:28.732 INFO  [main] org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2023-08-03 15:27:28.885 INFO  [main] org.hibernate.bytecode.internal.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2023-08-03 15:27:29.050 INFO  [main] org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-03 15:27:29.074 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-08-03 15:27:29.280 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6f1d799
+2023-08-03 15:27:29.282 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-08-03 15:27:29.326 WARN  [main] org.hibernate.dialect.Dialect - HHH000511: The 5.5.0 version for [org.hibernate.dialect.MariaDBDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 10.3.0. Check the community dialects project for available legacy versions.
+2023-08-03 15:27:29.725 INFO  [main] org.hibernate.bytecode.internal.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2023-08-03 15:27:30.390 INFO  [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-03 15:27:30.508 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-03 15:27:30.868 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-03 15:27:31.135 INFO  [main] org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-08-03 15:27:31.155 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-08-03 15:27:31.162 INFO  [main] com.notlix.back.NotlixBackendApplication - Started NotlixBackendApplication in 4.625 seconds (process running for 5.76)
+2023-08-03 15:47:49.728 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=20m20s641ms432µs).
+2023-08-03 15:48:41.632 INFO  [http-nio-8080-exec-2] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-08-03 15:48:41.632 INFO  [http-nio-8080-exec-2] org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-08-03 15:48:41.632 INFO  [http-nio-8080-exec-2] org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2023-08-03 17:06:19.320 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m58s761ms689µs400ns).
+2023-08-03 17:55:26.164 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=25m36s758ms29µs100ns).
+2023-08-03 18:00:03.874 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m7s983ms578µs800ns).
+2023-08-03 18:22:17.395 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m13s507ms257µs800ns).
+2023-08-03 19:03:26.147 INFO  [RMI TCP Connection(208)-127.0.0.1] org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2023-08-03 19:03:26.202 INFO  [RMI TCP Connection(208)-127.0.0.1] org.apache.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2023-08-03 19:03:26.202 INFO  [RMI TCP Connection(208)-127.0.0.1] org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2023-08-03 19:03:26.210 INFO  [RMI TCP Connection(208)-127.0.0.1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-08-03 19:03:26.230 INFO  [RMI TCP Connection(208)-127.0.0.1] org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2023-08-03 19:03:26.234 INFO  [RMI TCP Connection(208)-127.0.0.1] org.apache.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8080"]
+2023-08-03 19:03:26.240 INFO  [RMI TCP Connection(208)-127.0.0.1] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-03 19:03:26.248 INFO  [RMI TCP Connection(208)-127.0.0.1] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-08-03 19:03:26.254 INFO  [RMI TCP Connection(208)-127.0.0.1] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2023-08-03 21:35:34.901 INFO  [main] com.notlix.back.NotlixBackendApplication - Starting NotlixBackendApplication using Java 17.0.7 with PID 11900 (C:\Users\sukit\OneDrive\Escritorio\notlix\notlix-backend\target\classes started by sukit in C:\Users\sukit\OneDrive\Escritorio\notlix\notlix-backend)
+2023-08-03 21:35:34.914 INFO  [main] com.notlix.back.NotlixBackendApplication - No active profile set, falling back to 1 default profile: "default"
+2023-08-03 21:35:35.609 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-03 21:35:35.686 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 67 ms. Found 4 JPA repository interfaces.
+2023-08-03 21:35:36.233 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-08-03 21:35:36.244 INFO  [main] org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-08-03 21:35:36.246 INFO  [main] org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-08-03 21:35:36.247 INFO  [main] org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.10]
+2023-08-03 21:35:36.363 INFO  [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-08-03 21:35:36.363 INFO  [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1397 ms
+2023-08-03 21:35:36.562 INFO  [main] org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-03 21:35:36.633 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.5.Final
+2023-08-03 21:35:36.636 INFO  [main] org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2023-08-03 21:35:36.795 INFO  [main] org.hibernate.bytecode.internal.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2023-08-03 21:35:36.945 INFO  [main] org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-03 21:35:36.973 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-08-03 21:35:37.186 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7b3feb26
+2023-08-03 21:35:37.188 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-08-03 21:35:37.256 WARN  [main] org.hibernate.dialect.Dialect - HHH000511: The 5.5.0 version for [org.hibernate.dialect.MariaDBDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 10.3.0. Check the community dialects project for available legacy versions.
+2023-08-03 21:35:37.671 INFO  [main] org.hibernate.bytecode.internal.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2023-08-03 21:35:38.742 INFO  [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-03 21:35:39.623 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-03 21:35:41.324 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-03 21:35:41.821 INFO  [main] org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-08-03 21:35:41.878 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-08-03 21:35:41.893 INFO  [main] com.notlix.back.NotlixBackendApplication - Started NotlixBackendApplication in 7.422 seconds (process running for 8.565)
+2023-08-03 21:37:51.624 INFO  [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-08-03 21:37:51.624 INFO  [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-08-03 21:37:51.629 INFO  [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet - Completed initialization in 5 ms
+2023-08-03 23:57:33.855 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=15m54s982ms788µs200ns).

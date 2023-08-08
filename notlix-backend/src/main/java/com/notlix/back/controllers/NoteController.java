@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.notlix.back.dtos.NoteDTO;
 import com.notlix.back.models.Note;
 import com.notlix.back.models.Task;
 import com.notlix.back.models.User;
@@ -40,20 +41,21 @@ public class NoteController {
 		return new ResponseEntity<>(notes,HttpStatus.OK);
 	}
 	
-	@PostMapping("/add")
+	@PostMapping("/add/{email}")
 	public ResponseEntity<String> addNote(
-			@RequestBody Note noteData
+			@RequestBody NoteDTO noteData,
+			@PathVariable("email") String email
 			){
 		try {
 			Note note = new Note();
-			User user = userService.findUserById(noteData.getUser().getId());
+			User user = userService.findUserByEmail(email);
 			
 			note.setTitle(noteData.getTitle());
 			note.setContent(noteData.getContent());
 			note.setUser(user);
 			
 			Note newNote = noteService.addNote(note);
-			return new ResponseEntity<String>("" + newNote,HttpStatus.CREATED);
+			return new ResponseEntity<String>("" + newNote.getId(),HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
