@@ -25,18 +25,24 @@
       }
     }
 
-    .searchField {
+    .asideActions {
       padding: 6px 5px 5px 14px;
-      width: 100%;
       display: flex;
-      flex-direction: row;
-      align-items: center;
+
+      .icon{
+        width: 1.3rem;
+        cursor:pointer;
+      }
 
       input {
         //Establecer estilos
-        width: 85%;
+        width: 75%;
         overflow: hidden;
-
+      }
+      .newNoteBtn{
+        background-color: #efddb3;
+        margin-left:15px;
+        border-radius: 100px 100px 100px 100px;
       }
     }
   }

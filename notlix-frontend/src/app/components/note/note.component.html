@@ -1,8 +1,14 @@
  <div class="mainContainer">
-  <aside id="aside">
-    <!--Search -->
-      <div class="searchField">
-        <input type="search" placeholder="Busca tus notas por titulo" spellcheck="false">
+   <aside id="aside">
+      <div class="asideActions">
+        <!--Search -->
+        <label for="searchField">
+          <img src="assets/searchIcon.svg" class="icon" alt="icono lupa" />
+        </label>
+        <input type="search" id="searchField" placeholder="Busca tus notas por titulo" spellcheck="false">
+
+        <!--New note button-->
+        <button class="newNoteBtn" (click)="newNote()">Nueva nota</button>
       </div>
 
     <!--Notes in the left panel-->
