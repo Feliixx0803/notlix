@@ -4,7 +4,8 @@ import {UserService} from "../../services/userService/user.service";
 import {lastValueFrom, Subscription} from "rxjs";
 import {NoteDTO} from "../../models/DTO/note-dto";
 import {NoteService} from "../../services/noteService/note.service";
-import {NoteModel} from "../../models/note/note-model";
+import {MatDialog} from "@angular/material/dialog";
+import {MatDialogComponent} from "../../modules/angular-mat/components/mat-dialog/mat-dialog.component";
 
 @Component({
   selector: 'app-noteService',
@@ -13,13 +14,13 @@ import {NoteModel} from "../../models/note/note-model";
 })
 export class NoteComponent implements OnInit, OnDestroy{
   subscription :Subscription = new Subscription();
-  notes :NoteDTO[] = [];
   selectedNote! :NoteDTO;
   isSelected :boolean = false;
 
   constructor(private http :HttpClient,
               private userService :UserService,
-              private notesService :NoteService) {}
+              public notesService :NoteService,
+              private dialog :MatDialog) {}
 
   ngOnInit(): void {
     const email :any= localStorage.getItem('user');
@@ -28,13 +29,14 @@ export class NoteComponent implements OnInit, OnDestroy{
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+    this.notesService.notes = [];
   }
 
   async getUserNotes (email :string){
     let notesBack = await lastValueFrom(this.userService.getUserNotes(email));
 
     notesBack.forEach( note => {
-      this.notes.push(note);
+      this.notesService.notes.push(note);
     })
   }
 
@@ -44,21 +46,13 @@ export class NoteComponent implements OnInit, OnDestroy{
      this.isSelected = true;
   }
 
-  newNote() {
-    let actualUser = localStorage.getItem('user');
-    let newNote :NoteDTO = {
-      title:'Pruebaa',
-      content: 'Nota de prueba'
-    }
-    this.notesService.addNewNote(newNote, actualUser).subscribe(
-      ()=>{
-        this.notes.push(newNote);
-      },
-      (error) => {
-        alert("No pueden existir notas con el mismo nombre")
-        console.error(`Hubo un error al crear la nota: ${error}`)
-      },
-      ()=> console.log("Nota creada con exito"))
+
+
+  openDialog(){
+    this.dialog.open(MatDialogComponent, {
+      height: '400px',
+      width: '600px',
+    });
   }
 
   changingSelectedNote() {

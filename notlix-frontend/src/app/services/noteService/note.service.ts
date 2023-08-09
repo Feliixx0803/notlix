@@ -11,6 +11,9 @@ import {NoteModel} from "../../models/note/note-model";
 export class NoteService {
   apiUrl = environment.apiUrl;
 
+  //It stores all notes from the logged user
+  notes :NoteDTO[] = [];
+
   constructor(private http :HttpClient) { }
 
   findNoteByTitle(title :string) :Observable<NoteDTO>{

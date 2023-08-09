@@ -8,12 +8,12 @@
         <input type="search" id="searchField" placeholder="Busca tus notas por titulo" spellcheck="false">
 
         <!--New note button-->
-        <button class="newNoteBtn" (click)="newNote()">Nueva nota</button>
+        <button class="newNoteBtn" (click)="openDialog()">Nueva nota</button>
       </div>
 
     <!--Notes in the left panel-->
-   <ng-container *ngIf="notes.length; else noNotes">
-      <div class="notesTitle" *ngFor="let n of notes">
+   <ng-container *ngIf="notesService.notes.length; else noNotes">
+      <div class="notesTitle" *ngFor="let n of notesService.notes">
         <button (click)="openSelectedNote(n.title)">{{n.title}}</button>
       </div>
    </ng-container>
