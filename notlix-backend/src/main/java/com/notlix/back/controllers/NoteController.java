@@ -69,14 +69,13 @@ public class NoteController {
 	}
 	
 		
-	@PutMapping("/update/{id}")
+	@PutMapping("/update")
 	public ResponseEntity<Note> updateNote(
-			@RequestBody Note noteData,
-			@PathVariable("id") Long id
+			@RequestBody NoteDTO noteData
 			){
-		Note note = noteService.findNoteById(id);
+		Note note = noteService.findNoteByTitle(noteData.getTitle());
 		note.setContent(noteData.getContent());
-		note.setTitle(noteData.getTitle());
+		//note.setTitle(noteData.getTitle());
 		
 		Note noteUpdate = noteService.updateNote(note);
 		return new ResponseEntity<>(noteUpdate, HttpStatus.OK);
