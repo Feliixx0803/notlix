@@ -28,4 +28,13 @@ export class NoteService {
     return this.http.put<NoteModel>(`${this.apiUrl}/note/update`,note);
   }
 
+  deleteNote(title :string) {
+    let index = this.notes.findIndex(note => note.title === title);
+    if (index !== -1) {
+      this.notes.splice(index, 1);
+    }
+
+    return this.http.delete(`${this.apiUrl}/note/delete/${title}`);
+  }
+
 }

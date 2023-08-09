@@ -66,4 +66,11 @@ export class NoteComponent implements OnInit, OnDestroy{
       )
     },1000)
   }
+
+  deleteNote(n: NoteDTO) {
+    this.notesService.deleteNote(n.title).subscribe(()=>{
+      alert("Nota borrada")
+      this.isSelected = false;
+    });
+  }
 }
