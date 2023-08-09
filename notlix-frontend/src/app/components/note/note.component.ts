@@ -14,7 +14,7 @@ import {NoteModel} from "../../models/note/note-model";
 export class NoteComponent implements OnInit, OnDestroy{
   subscription :Subscription = new Subscription();
   notes :NoteDTO[] = [];
-  selectedNoteContent? :string;
+  selectedNote! :NoteDTO;
   isSelected :boolean = false;
 
   constructor(private http :HttpClient,
@@ -23,9 +23,7 @@ export class NoteComponent implements OnInit, OnDestroy{
 
   ngOnInit(): void {
     const email :any= localStorage.getItem('user');
-    this.getUserNotes(email).then(()=>{
-      console.log(this.notes);
-    });
+    this.getUserNotes(email);
   }
 
   ngOnDestroy(): void {
@@ -42,15 +40,8 @@ export class NoteComponent implements OnInit, OnDestroy{
 
   async openSelectedNote(title: string) {
      let note = await lastValueFrom(this.notesService.findNoteByTitle(title));
-     this.selectedNoteContent = this.getFormattedContent(note.content);
+     this.selectedNote = note;
      this.isSelected = true;
-
-  }
-
-  //To give note`s content a format suitable for rendering in HTML
-  getFormattedContent(content :string) : string{
-    const formattedContent = content.replace(/\r\n/g, '<br />');
-    return formattedContent;
   }
 
   newNote() {
@@ -68,5 +59,17 @@ export class NoteComponent implements OnInit, OnDestroy{
         console.error(`Hubo un error al crear la nota: ${error}`)
       },
       ()=> console.log("Nota creada con exito"))
+  }
+
+  changingSelectedNote() {
+   setTimeout(()=>{
+      this.notesService.updateNote(this.selectedNote).subscribe(
+        ()=>{
+
+        },
+        (error :any)=> console.error(`Ocurrio un error al actualizar la nota seleccionada ${error}`),
+        ()=> console.log("Nota actualizada con exito")
+      )
+    },1000)
   }
 }

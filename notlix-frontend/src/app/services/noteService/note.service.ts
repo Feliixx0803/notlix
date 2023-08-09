@@ -21,4 +21,8 @@ export class NoteService {
     return this.http.post<NoteDTO>(`${this.apiUrl}/note/add/${email}`,note);
   }
 
+  updateNote(note :NoteDTO) :Observable<NoteModel>{
+    return this.http.put<NoteModel>(`${this.apiUrl}/note/update`,note);
+  }
+
 }
