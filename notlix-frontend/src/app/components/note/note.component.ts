@@ -1,11 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {UserService} from "../../services/userService/user.service";
-import {lastValueFrom, Subscription} from "rxjs";
+import {lastValueFrom, map, Observable, startWith, Subscription} from "rxjs";
 import {NoteDTO} from "../../models/DTO/note-dto";
 import {NoteService} from "../../services/noteService/note.service";
 import {MatDialog} from "@angular/material/dialog";
 import {MatDialogComponent} from "../../modules/angular-mat/components/mat-dialog/mat-dialog.component";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-noteService',
@@ -17,6 +18,9 @@ export class NoteComponent implements OnInit, OnDestroy{
   selectedNote! :NoteDTO;
   isSelected :boolean = false;
 
+  searchField = new FormControl('');
+  filteredOptions!: Observable<any[]>;
+
   constructor(private http :HttpClient,
               private userService :UserService,
               public notesService :NoteService,
@@ -25,11 +29,22 @@ export class NoteComponent implements OnInit, OnDestroy{
   ngOnInit(): void {
     const email :any= localStorage.getItem('user');
     this.getUserNotes(email);
+
+    this.filteredOptions = this.searchField.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || '')),
+    );
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
     this.notesService.notes = [];
+  }
+
+  private _filter(value: string): NoteDTO[] {
+    const filterNote = value.toLowerCase();
+
+    return this.notesService.notes.filter(note => note.title.toLowerCase().includes(filterNote));
   }
 
   async getUserNotes (email :string){
@@ -38,6 +53,7 @@ export class NoteComponent implements OnInit, OnDestroy{
     notesBack.forEach( note => {
       this.notesService.notes.push(note);
     })
+    console.log(this.notesService.notes)
   }
 
   async openSelectedNote(title: string) {

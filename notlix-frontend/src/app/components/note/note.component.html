@@ -1,19 +1,19 @@
  <div class="mainContainer">
    <aside id="aside">
-      <div class="asideActions">
+      <form class="asideActions">
         <!--Search -->
         <label for="searchField">
           <img src="assets/searchIcon.svg" class="icon" alt="icono lupa" />
         </label>
-        <input type="search" id="searchField" placeholder="Busca tus notas por titulo" spellcheck="false">
+        <input type="search" id="searchField" placeholder="Buscar notas" spellcheck="false" [formControl]="searchField">
 
         <!--New note button-->
         <button class="newNoteBtn" (click)="openDialog()">Nueva nota</button>
-      </div>
+      </form>
 
     <!--Notes in the left panel-->
    <ng-container *ngIf="notesService.notes.length; else noNotes">
-      <div class="notesTitle" *ngFor="let n of notesService.notes">
+      <div class="notesTitle" *ngFor="let n of filteredOptions | async">
         <button (click)="deleteNote(n)">
           <img src="assets/delete.svg" class="icon" alt="borrar nota" />
         </button>
