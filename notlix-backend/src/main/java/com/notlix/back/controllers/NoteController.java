@@ -89,11 +89,12 @@ public class NoteController {
 		return new ResponseEntity<Note> (note, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/delete/{title}")
 	public ResponseEntity<?> deleteNote(
-			@PathVariable("id") Long id
+			@PathVariable("title") String title
 			){
-		noteService.deleteNoteById(id);
+		Note note = noteService.findNoteByTitle(title);
+		noteService.deleteNoteById(note.getId());
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
