@@ -12,19 +12,19 @@
       </form>
 
     <!--Notes in the left panel-->
-   <ng-container *ngIf="notesService.notes.length; else noNotes">
-      <div class="notesTitle" *ngFor="let n of filteredOptions | async">
-        <button (click)="deleteNote(n)">
-          <img src="assets/delete.svg" class="icon" alt="borrar nota" />
-        </button>
-        <button (click)="openSelectedNote(n.title)">{{n.title}}</button>
-      </div>
-   </ng-container>
-    <ng-template #noNotes>
-      <div class="notesTitle">
-        <button>No hay notas, crea una. (PROVISIONAL)</button>
-      </div>
-    </ng-template>
+     <ng-container *ngIf="notesService.notes.length; else noNotes">
+        <div class="notesTitle" *ngFor="let n of notesService.filteredOptions$ | async">
+          <button (click)="deleteNote(n)">
+            <img src="assets/delete.svg" class="icon" alt="borrar nota" />
+          </button>
+          <button (click)="openSelectedNote(n.title)">{{n.title}}</button>
+        </div>
+     </ng-container>
+      <ng-template #noNotes>
+        <div class="notesTitle">
+          <button>No hay notas, crea una. (PROVISIONAL)</button>
+        </div>
+      </ng-template>
   </aside>
 
   <div class="mainContent">

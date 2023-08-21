@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {UserService} from "../../services/userService/user.service";
-import {lastValueFrom, map, Observable, startWith, Subscription} from "rxjs";
+import {from, lastValueFrom, map, Observable, startWith, Subscription} from "rxjs";
 import {NoteDTO} from "../../models/DTO/note-dto";
 import {NoteService} from "../../services/noteService/note.service";
 import {MatDialog} from "@angular/material/dialog";
@@ -19,7 +19,6 @@ export class NoteComponent implements OnInit, OnDestroy{
   isSelected :boolean = false;
 
   searchField = new FormControl('');
-  filteredOptions!: Observable<any[]>;
 
   constructor(private http :HttpClient,
               private userService :UserService,
@@ -30,10 +29,7 @@ export class NoteComponent implements OnInit, OnDestroy{
     const email :any= localStorage.getItem('user');
     this.getUserNotes(email);
 
-    this.filteredOptions = this.searchField.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value || '')),
-    );
+    this.notesService.updateFilteredOptions(this.searchField);
   }
 
   ngOnDestroy(): void {
@@ -41,11 +37,9 @@ export class NoteComponent implements OnInit, OnDestroy{
     this.notesService.notes = [];
   }
 
-  private _filter(value: string): NoteDTO[] {
-    const filterNote = value.toLowerCase();
 
-    return this.notesService.notes.filter(note => note.title.toLowerCase().includes(filterNote));
-  }
+
+
 
   async getUserNotes (email :string){
     let notesBack = await lastValueFrom(this.userService.getUserNotes(email));
@@ -68,15 +62,14 @@ export class NoteComponent implements OnInit, OnDestroy{
     this.dialog.open(MatDialogComponent, {
       height: '400px',
       width: '600px',
+      data:this.searchField
     });
   }
 
   changingSelectedNote() {
    setTimeout(()=>{
       this.notesService.updateNote(this.selectedNote).subscribe(
-        ()=>{
-
-        },
+        ()=>{},
         (error :any)=> console.error(`Ocurrio un error al actualizar la nota seleccionada ${error}`),
         ()=> console.log("Nota actualizada con exito")
       )
@@ -87,6 +80,10 @@ export class NoteComponent implements OnInit, OnDestroy{
     this.notesService.deleteNote(n.title).subscribe(()=>{
       alert("Nota borrada")
       this.isSelected = false;
+
+      //As we are emitting the values of the array notes, when there is a change in the array notes
+      // we must update and reflect this change in the observable as well.
+      this.notesService.updateFilteredOptions(this.searchField);
     });
   }
 }

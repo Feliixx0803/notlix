@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {NoteDTO} from "../../models/DTO/note-dto";
-import {Observable} from "rxjs";
+import {map, Observable, startWith} from "rxjs";
 import {NoteModel} from "../../models/note/note-model";
 
 @Injectable({
@@ -13,8 +13,22 @@ export class NoteService {
 
   //It stores all notes from the logged user
   notes :NoteDTO[] = [];
+  filteredOptions$!: Observable<NoteDTO[]>;
 
   constructor(private http :HttpClient) { }
+
+  updateFilteredOptions(searchField :any) :void {
+    this.filteredOptions$ = searchField.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || ''))
+    );
+  }
+
+  private _filter(value: any): NoteDTO[] {
+    const filterNote = value.toLowerCase();
+
+    return this.notes.filter(note => note.title.toLowerCase().includes(filterNote));
+  }
 
   findNoteByTitle(title :string) :Observable<NoteDTO>{
     return this.http.get<NoteDTO>(`${this.apiUrl}/note/findNoteByTitle/${title}`, {responseType: 'json'});
