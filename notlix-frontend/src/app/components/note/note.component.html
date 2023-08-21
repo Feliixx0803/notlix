@@ -27,7 +27,10 @@
       </ng-template>
   </aside>
 
-  <div class="mainContent">
+  <div class="mainContent" [ngClass]="{ 'fullScreen': isSelected }">
+    <div class="return">
+      <button>ICONO VOLVER</button>
+    </div>
     <textarea *ngIf="isSelected"
               [value]="selectedNote?.title"
               (input)="changingSelectedNote()"

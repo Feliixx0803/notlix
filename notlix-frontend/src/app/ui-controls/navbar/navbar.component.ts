@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit,OnDestroy{
   subscriptions :Subscription = new Subscription();
   userLogged: boolean = false;
 
+
   constructor(private navbarService :NavbarService, private userService :AuthService) {
   }
 
