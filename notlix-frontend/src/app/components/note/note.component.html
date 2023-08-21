@@ -29,7 +29,9 @@
 
   <div class="mainContent" [ngClass]="{ 'fullScreen': isSelected }">
     <div class="return">
-      <button>ICONO VOLVER</button>
+      <button (click)="isSelected = false">
+        <img src="assets/backIcon.svg" alt="volver" class="icon" />
+      </button>
     </div>
     <textarea *ngIf="isSelected"
               [value]="selectedNote?.title"
