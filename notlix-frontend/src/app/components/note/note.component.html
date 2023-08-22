@@ -36,7 +36,8 @@
     <textarea *ngIf="isSelected"
               [value]="selectedNote?.title"
               (input)="changingSelectedNote()"
-              [(ngModel)]="selectedNote.content">
+              [(ngModel)]="selectedNote.content"
+              spellcheck="false">
     </textarea>
   </div>
  </div>

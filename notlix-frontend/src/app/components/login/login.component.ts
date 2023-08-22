@@ -2,8 +2,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NavbarService} from "../../services/navbarService/navbarService";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
-import {UserDTO} from "../../models/DTO/user-dto";
 import {AuthService} from "../../services/authService/auth.service";
+import {PopUpService} from "../../services/PopUp/pop-up.service";
 
 @Component({
   selector: 'app-login',
@@ -18,7 +18,8 @@ export class LoginComponent implements OnInit, OnDestroy{
   constructor(private navbarService : NavbarService,
               private formBuilder :FormBuilder,
               private router :Router,
-              private userService :AuthService
+              private userService :AuthService,
+              private popUpService : PopUpService
   ) {
   }
 
@@ -62,7 +63,7 @@ export class LoginComponent implements OnInit, OnDestroy{
         this.userService.userLogged.next(true);
         this.router.navigate(["/home"]);
       },
-      (error) => console.error("Error al hacer el login: ", error),
+      (error) => this.popUpService.showPopup("El email o la contraseña no son correctos"),
       ()=> console.info("Fin login usuario")
     )
 

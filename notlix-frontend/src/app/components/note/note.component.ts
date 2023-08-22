@@ -7,6 +7,7 @@ import {NoteService} from "../../services/noteService/note.service";
 import {MatDialog} from "@angular/material/dialog";
 import {MatDialogComponent} from "../../modules/angular-mat/components/mat-dialog/mat-dialog.component";
 import {FormControl} from "@angular/forms";
+import {PopUpService} from "../../services/PopUp/pop-up.service";
 
 @Component({
   selector: 'app-noteService',
@@ -23,7 +24,8 @@ export class NoteComponent implements OnInit, OnDestroy{
   constructor(private http :HttpClient,
               private userService :UserService,
               public notesService :NoteService,
-              private dialog :MatDialog) {}
+              private dialog :MatDialog,
+              private popUpService :PopUpService) {}
 
   ngOnInit(): void {
     const email :any= localStorage.getItem('user');
@@ -37,6 +39,7 @@ export class NoteComponent implements OnInit, OnDestroy{
     this.notesService.notes = [];
   }
 
+
   async getUserNotes (email :string){
     let notesBack = await lastValueFrom(this.userService.getUserNotes(email));
 
@@ -45,6 +48,7 @@ export class NoteComponent implements OnInit, OnDestroy{
     })
     console.log(this.notesService.notes)
   }
+
 
   async openSelectedNote(title: string) {
      let note = await lastValueFrom(this.notesService.findNoteByTitle(title));
@@ -74,8 +78,9 @@ export class NoteComponent implements OnInit, OnDestroy{
 
   deleteNote(n: NoteDTO) {
     this.notesService.deleteNote(n.title).subscribe(()=>{
-      alert("Nota borrada")
       this.isSelected = false;
+      this.popUpService.showPopup('Nota eliminada con éxito');
+
 
       //As we are emitting the values of the array notes, when there is a change in the array notes
       // we must update and reflect this change in the observable as well.

@@ -1,0 +1,41 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 25px;
+
+  h1{
+    font-size: 2rem;
+    margin-bottom: .8em;
+  }
+
+  .content{
+    display: grid;
+    gap: 1.5em;
+  }
+
+  .group{
+    position: relative;
+  }
+
+  input{
+    padding: .4em .2em;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #706f6f;
+  }
+
+  label{
+    cursor:pointer;
+    position:absolute;
+    bottom: 30px;
+    left:5px;
+  }
+}

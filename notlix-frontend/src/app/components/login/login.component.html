@@ -1,19 +1,24 @@
-<div class="main-container">
-  <h1 class="title">NOTLIX</h1>
-  <form [formGroup]="loginForm">
-    <mat-form-field>
-      <mat-label>Email</mat-label>
-      <input type="email" name="email" formControlName="email" matInput>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Contraseña</mat-label>
-      <input matInput [type]="hidePwd ? 'password' : 'text'" formControlName="pwd">
-      <button mat-icon-button matSuffix (click)="hidePwd = !hidePwd" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePwd">
-        <mat-icon>{{hidePwd ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button>
-    </mat-form-field>
-    <button [disabled]="loginForm.invalid" (click)="login()">Iniciar sesión</button>
-  </form>
+<div class="mainContainer">
+  <form class="form" [formGroup]="loginForm">
+    <h2 class="form_title">NOTLIX</h2>
 
+    <div class="form_container">
+      <div class="form_group">
+        <input type="email" name="email" id="email" class="form_input" formControlName="email" placeholder=" ">
+        <label class="form_label" for="email">Email</label>
+        <span class="form_line"></span>
+      </div>
+
+      <div class="form_group">
+        <input id="pwd" class="form_input" [type]="hidePwd ? 'password' : 'text'" formControlName="pwd" placeholder=" ">
+        <label class="form_label" for="pwd">Contraseña</label>
+        <!--<button mat-icon-button matSuffix (click)="hidePwd = !hidePwd" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePwd">
+          <mat-icon>{{hidePwd ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>-->
+        <span class="form_line"></span>
+      </div>
+      <button class="form_submit" [disabled]="loginForm.invalid" (click)="login()">Iniciar sesión</button>
+    </div>
+  </form>
 </div>
 

@@ -2,6 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {NoteDTO} from "../../../../models/DTO/note-dto";
 import {NoteService} from "../../../../services/noteService/note.service";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {PopUpService} from "../../../../services/PopUp/pop-up.service";
 
 @Component({
   selector: 'app-mat-dialog',
@@ -13,7 +14,8 @@ export class MatDialogComponent {
   content :string = "";
 
   constructor(@Inject(MAT_DIALOG_DATA) public searchField: any,
-              private notesService :NoteService) {
+              private notesService :NoteService,
+              private popUpService :PopUpService) {
   }
   newNote() {
     let actualUser = localStorage.getItem('user');
@@ -28,7 +30,7 @@ export class MatDialogComponent {
         this.notesService.updateFilteredOptions(this.searchField);
       },
       (error) => {
-        alert("No pueden existir notas con el mismo nombre")
+        this.popUpService.showPopup("Rellene todos los campos. No pueden existir notas con el mismo nombre");
         console.error(`Hubo un error al crear la nota: ${error}`)
       },
       ()=> console.log("Nota creada con exito"))

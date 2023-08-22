@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/authService/auth.service";
+import {PopUpService} from "../../services/PopUp/pop-up.service";
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,8 @@ export class RegisterComponent implements OnInit,OnDestroy{
               private formBuilder: FormBuilder,
               public http :HttpClient,
               private router: Router,
-              private userService :AuthService
+              private userService :AuthService,
+              private popUpService : PopUpService
   ) {
   }
 
@@ -71,7 +73,7 @@ export class RegisterComponent implements OnInit,OnDestroy{
 
     this.userService.register(body).subscribe(
       (response) => this.router.navigate(["/login"]),
-      (error) => console.log("Error al registrar usuario"),
+      (error) => this.popUpService.showPopup("Debe rellenar todos los campos."),
       ()=> console.info("Fin registro usuario")
     );
   }

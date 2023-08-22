@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from "@angular/material/input";
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatDialogComponent } from './components/mat-dialog/mat-dialog.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MatDialogComponent } from './components/mat-dialog/mat-dialog.component
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
   exports:[
     MatToolbarModule,
@@ -32,7 +34,8 @@ import { MatDialogComponent } from './components/mat-dialog/mat-dialog.component
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ]
 })
 export class AngularMatModule { }

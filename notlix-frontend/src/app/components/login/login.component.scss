@@ -1,0 +1,91 @@
+.mainContainer{
+  width:100%;
+  height:100%;
+  display: flex;
+  background-color: #e5e5f7;
+  opacity: 0.8;
+  background-image:  radial-gradient(#444cf7 0.5px, transparent 0.5px), radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
+  background-size: 20px 20px;
+  background-position: 0 0,10px 10px;
+
+
+  .form{
+    background-color: white;
+    margin:auto;  //Centers the form in flex designs
+    width:90%;
+    max-width: 400px;
+    padding: 4.5em 3em;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px -5px rgb(0 0 0 / 30%);
+    text-align: center;
+
+    .form_title{
+      font-size: 2rem;
+      margin-bottom: .5em;
+    }
+
+    .form_container{
+      margin-top: 3em;
+      display: grid;
+      gap: 2.5em;
+
+      .form_group{
+        position: relative;
+
+        .form_input{
+          width: 100%;
+          background: none;
+          color:#706c6c;
+          font-size: 1rem;
+          padding: .6em .3em;
+          border:none;
+          outline:none;
+          border-bottom: 1px solid gray;
+        }
+
+        .form_input:focus + .form_label, //When we select an input, its label will we affected
+        .form_input:not(:placeholder-shown) + .form_label{  //When the placeholder is not shown (when we have written in the input)
+          transform: translateY(-12px) scale(.7);
+          transform-origin: left top;
+          color: #3866f2;
+        }
+
+        .form_label{
+          color: rgba(52, 52, 52, 0.49);
+          cursor:pointer;
+          position:absolute;
+          top: 0px;
+          left: 5px;
+          transform: translateY(10px);
+          transition: transform .5s, color .3s;
+        }
+
+        .form_line{
+          position: absolute;
+          bottom:0;
+          left: 0;
+          width: 100%;
+          height: 1px;
+          background-color: #3866f2;
+          transform: scale(0);
+          transform-origin:left bottom;
+          transition: transform .4s;
+        }
+
+        .form_input:focus ~ .form_line,
+        .form_input:not(:placeholder-shown) ~ .form_line{
+          transform: scale(1);
+        }
+
+      }
+      .form_submit{
+        background-color: #3866f2;
+        color:#fff;
+        font-weight: 300;
+        font-size: 1rem;
+        padding: .8em 0;
+        border-radius: .5em;
+      }
+    }
+  }
+}

@@ -47,6 +47,11 @@ public class NoteController {
 			@PathVariable("email") String email
 			){
 		try {
+		
+			if (noteData.getTitle() == "" || noteData.getContent() == "") {
+				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			}
+			
 			Note note = new Note();
 			User user = userService.findUserByEmail(email);
 			
