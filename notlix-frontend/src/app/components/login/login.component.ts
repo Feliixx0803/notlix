@@ -13,8 +13,6 @@ import {PopUpService} from "../../services/PopUp/pop-up.service";
 export class LoginComponent implements OnInit, OnDestroy{
   loginForm :FormGroup = new FormGroup({});
 
-  hidePwd = true;
-
   constructor(private navbarService : NavbarService,
               private formBuilder :FormBuilder,
               private router :Router,

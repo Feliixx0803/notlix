@@ -10,11 +10,8 @@
       </div>
 
       <div class="form_group">
-        <input id="pwd" class="form_input" [type]="hidePwd ? 'password' : 'text'" formControlName="pwd" placeholder=" ">
+        <input id="pwd" class="form_input" type="password" formControlName="pwd" placeholder=" ">
         <label class="form_label" for="pwd">Contraseña</label>
-        <!--<button mat-icon-button matSuffix (click)="hidePwd = !hidePwd" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePwd">
-          <mat-icon>{{hidePwd ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>-->
         <span class="form_line"></span>
       </div>
       <button class="form_submit" [disabled]="loginForm.invalid" (click)="login()">Iniciar sesión</button>

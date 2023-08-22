@@ -14,7 +14,6 @@ import {PopUpService} from "../../services/PopUp/pop-up.service";
 export class RegisterComponent implements OnInit,OnDestroy{
   registerForm :FormGroup = new FormGroup({});
 
-  hidePwd = true;
   constructor(private navbarService : NavbarService,
               private formBuilder: FormBuilder,
               public http :HttpClient,
