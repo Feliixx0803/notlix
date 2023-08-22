@@ -27,14 +27,14 @@ hr{
     margin-bottom: 20px;
     font-size: 1rem;
     letter-spacing: 0.1em;
-    padding: 15px 80px;
-    border-radius: 5px;
   }
 
   .registerBtn{
     color:white;
     background: blue;
     transition: background 0.3s ease-in-out;
+    padding: 15px 80px;
+    border-radius: 5px;
   }
 
   .registerBtn:hover {
@@ -73,7 +73,7 @@ hr{
   flex-direction: column;
   text-align: center;
   max-width: 90%;
-  background-color: crimson;
+  background-color: #e0e1ff;
   margin: 0 auto 40px;
   padding: 40px 10px 20px 10px;
 
@@ -112,6 +112,10 @@ hr{
 
   .notlix-features .features-grid .item,.icon{
     flex-basis: 100%;
+  }
+
+  .main-description .registerBtn{
+    padding: 15px 60px;
   }
 
 }
