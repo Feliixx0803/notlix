@@ -58,6 +58,10 @@ public class UserController {
 			@RequestBody User user
 			){
 		try {
+			if (user.getEmail() == "" || user.getName() == "" || user.getPwd() == "" || user.getTelephone() == "") {
+				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			}
+			
 			Role role = roleService.findRoleById(user.getRole().getId());
 			user.setRole(role);
 			
