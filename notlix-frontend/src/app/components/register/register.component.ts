@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NavbarService} from "../../services/navbarService/navbarService";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/authService/auth.service";
@@ -28,10 +28,10 @@ export class RegisterComponent implements OnInit,OnDestroy{
 
     //FORM:
     this.registerForm= this.formBuilder.group({
-      name : [''],
-      email : [''],
-      telephone : [''],
-      pwd : ['']
+      name : ['',Validators.compose([Validators.required,Validators.pattern('[A-Za-záéíóúÁÉÍÓÚ\s]+$')])],
+      email : ['',Validators.compose([Validators.required,Validators.email])],
+      telephone : ['',Validators.compose([Validators.required,Validators.pattern('[0-9]{9}')])],
+      pwd : ['',Validators.compose([Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z]).{8,}')])]
     })
   }
 
@@ -58,22 +58,26 @@ export class RegisterComponent implements OnInit,OnDestroy{
 
 
   register() {
-    let name = this.name?.value;
-    let email = this.email?.value;
-    let telephone = this.telephone?.value;
-    let pwd = this.pwd?.value;
+    if(!this.registerForm.invalid){
+      let name = this.name?.value;
+      let email = this.email?.value;
+      let telephone = this.telephone?.value;
+      let pwd = this.pwd?.value;
 
-    let body = {
-      name: name,
-      email: email,
-      telephone: telephone,
-      pwd: pwd
+      let body = {
+        name: name,
+        email: email,
+        telephone: telephone,
+        pwd: pwd
+      }
+
+      this.userService.register(body).subscribe(
+        (response) => this.router.navigate(["/login"]),
+        (error) => this.popUpService.showPopup("Ya existe un usuario registrado con ese email"),
+        ()=> console.info("Fin registro usuario")
+      );
+    } else {
+      this.popUpService.showPopup("Debe rellenar todos los campos. Introduzca valores válidos");
     }
-
-    this.userService.register(body).subscribe(
-      (response) => this.router.navigate(["/login"]),
-      (error) => this.popUpService.showPopup("Debe rellenar todos los campos."),
-      ()=> console.info("Fin registro usuario")
-    );
   }
 }

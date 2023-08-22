@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NavbarService} from "../../services/navbarService/navbarService";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/authService/auth.service";
 import {PopUpService} from "../../services/PopUp/pop-up.service";
@@ -26,8 +26,8 @@ export class LoginComponent implements OnInit, OnDestroy{
 
     //FORM:
     this.loginForm= this.formBuilder.group({
-      email : [''],
-      pwd : ['']
+      email : ['',Validators.compose([Validators.required,Validators.email])],
+      pwd : ['',Validators.compose([Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z]).{8,}')])]
     })
   }
 

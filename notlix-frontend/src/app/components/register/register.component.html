@@ -11,15 +11,19 @@
         </div>
 
         <div class="form_group">
+          <input type="email" name="email" id="email" class="form_input" formControlName="email" placeholder=" ">
+          <label class="form_label" for="email">Email</label>
+          <span class="form_line"></span>
+        </div>
+
+
+        <div class="form_group">
           <input type="text" name="telephone" id="telephone" class="form_input" formControlName="telephone" placeholder=" ">
           <label class="form_label" for="telephone">Teléfono de contacto</label>
           <span class="form_line"></span>
         </div>
-
-        <div class="form_group">
-          <input type="email" name="email" id="email" class="form_input" formControlName="email" placeholder=" ">
-          <label class="form_label" for="email">Email</label>
-          <span class="form_line"></span>
+        <div *ngIf="telephone?.errors?.['pattern'] && telephone?.touched">
+          <p [ngStyle]="{color:'tomato'}">Debe contener 9 caracteres numéricos</p>
         </div>
 
         <div class="form_group">
@@ -27,7 +31,10 @@
           <label class="form_label" for="pwd">Contraseña</label>
           <span class="form_line"></span>
         </div>
-        <button class="form_submit" [disabled]="registerForm.invalid" (click)="register()">Registrarse</button>
+        <div *ngIf="pwd?.errors?.['pattern'] && pwd?.touched">
+          <p [ngStyle]="{color:'tomato'}">Debe contener al menos 1 mayuscula, 1 minuscula y 8 caracteres</p>
+        </div>
+        <button class="form_submit" (click)="register()">Registrarse</button>
       </div>
     </form>
   </div>
