@@ -7,12 +7,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from "@angular/material/input";
 import {MatDialogModule} from '@angular/material/dialog';
-import { MatDialogComponent } from './components/mat-dialog/mat-dialog.component';
+import { newNoteDialog } from './components/mat-dialog/newNoteDialog/new-note-dialog.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
-    MatDialogComponent
+    newNoteDialog
   ],
   imports: [
     CommonModule,

@@ -1,15 +1,15 @@
 import {Component, Inject} from '@angular/core';
-import {NoteDTO} from "../../../../models/DTO/note-dto";
-import {NoteService} from "../../../../services/noteService/note.service";
+import {NoteDTO} from "../../../../../models/DTO/note-dto";
+import {NoteService} from "../../../../../services/noteService/note.service";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {PopUpService} from "../../../../services/PopUp/pop-up.service";
+import {PopUpService} from "../../../../../services/PopUp/pop-up.service";
 
 @Component({
   selector: 'app-mat-dialog',
-  templateUrl: './mat-dialog.component.html',
-  styleUrls: ['./mat-dialog.component.scss']
+  templateUrl: './new-note-dialog.component.html',
+  styleUrls: ['./new-note-dialog.component.scss']
 })
-export class MatDialogComponent {
+export class newNoteDialog {
   title :string = "";
   content :string = "";
 

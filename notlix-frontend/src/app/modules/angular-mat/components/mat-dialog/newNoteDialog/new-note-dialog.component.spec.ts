@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MatDialogComponent } from './mat-dialog.component';
+import { newNoteDialog } from './new-note-dialog.component';
 
 describe('MatDialogComponent', () => {
-  let component: MatDialogComponent;
-  let fixture: ComponentFixture<MatDialogComponent>;
+  let component: newNoteDialog;
+  let fixture: ComponentFixture<newNoteDialog>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MatDialogComponent]
+      declarations: [newNoteDialog]
     });
-    fixture = TestBed.createComponent(MatDialogComponent);
+    fixture = TestBed.createComponent(newNoteDialog);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

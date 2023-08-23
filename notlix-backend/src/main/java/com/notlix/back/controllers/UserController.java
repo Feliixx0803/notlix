@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.notlix.back.dtos.NoteDTO;
+import com.notlix.back.dtos.TaskDTO;
 import com.notlix.back.models.Note;
 import com.notlix.back.models.Role;
+import com.notlix.back.models.Task;
 import com.notlix.back.models.User;
 import com.notlix.back.services.RoleService;
 import com.notlix.back.services.UserService;
@@ -109,5 +111,17 @@ public class UserController {
 			NotesList.add(new NoteDTO(n.getTitle(),n.getContent()));
 		}
 		return new ResponseEntity<>(NotesList,HttpStatus.OK);
+	}
+	
+	@GetMapping("/getUserTasks/{email}")
+	public ResponseEntity<List<TaskDTO>> getUserTasks(
+			@PathVariable("email") String email){
+		User user = userService.findUserByEmail(email);
+		List<TaskDTO> tasksList = new ArrayList<>();
+		
+		for(Task t :user.getTasks()) {
+			tasksList.add(new TaskDTO(t.getName(),t.isDone()));
+		}
+		return new ResponseEntity<>(tasksList,HttpStatus.OK);
 	}
 }

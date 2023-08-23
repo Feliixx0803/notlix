@@ -53,6 +53,8 @@ public class TaskController {
 			task.setName(taskData.getName());
 			
 			Task newTask = taskService.addTask(task);
+			user.getTasks().add(newTask);
+			userService.updateUser(user);
 			
 			return new ResponseEntity<String>("" + newTask,HttpStatus.CREATED);
 		} catch (Exception e) {

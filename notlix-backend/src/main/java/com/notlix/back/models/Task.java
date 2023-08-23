@@ -23,6 +23,8 @@ public class Task implements Serializable{
 	
 	private String name;
 	
+	private boolean isDone;
+	
 	@ManyToOne
 	@JsonBackReference
 	private User user;
@@ -34,6 +36,15 @@ public class Task implements Serializable{
 		super();
 		this.id = id;
 		this.name = name;
+		this.isDone = false;
+	}
+	
+
+	public Task(Long id, String name, boolean isDone) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.isDone = isDone;
 	}
 
 	public Long getId() {
@@ -58,6 +69,14 @@ public class Task implements Serializable{
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public boolean isDone() {
+		return isDone;
+	}
+
+	public void setDone(boolean isDone) {
+		this.isDone = isDone;
 	}
 	
 	

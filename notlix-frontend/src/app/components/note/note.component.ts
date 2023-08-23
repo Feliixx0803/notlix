@@ -5,7 +5,7 @@ import {lastValueFrom,Subscription} from "rxjs";
 import {NoteDTO} from "../../models/DTO/note-dto";
 import {NoteService} from "../../services/noteService/note.service";
 import {MatDialog} from "@angular/material/dialog";
-import {MatDialogComponent} from "../../modules/angular-mat/components/mat-dialog/mat-dialog.component";
+import {newNoteDialog} from "../../modules/angular-mat/components/mat-dialog/newNoteDialog/new-note-dialog.component";
 import {FormControl} from "@angular/forms";
 import {PopUpService} from "../../services/PopUp/pop-up.service";
 
@@ -59,7 +59,7 @@ export class NoteComponent implements OnInit, OnDestroy{
 
 
   openDialog(){
-    this.dialog.open(MatDialogComponent, {
+    this.dialog.open(newNoteDialog, {
       height: '400px',
       width: '600px',
       data:this.searchField

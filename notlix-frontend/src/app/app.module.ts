@@ -14,6 +14,8 @@ import { NavbarComponent } from './ui-controls/navbar/navbar.component';
 import {HttpClientModule} from "@angular/common/http";
 import { NoteComponent } from './components/note/note.component';
 import { TaskComponent } from './components/task/task.component';
+import { DragDropComponent } from './components/task/drag-drop/drag-drop.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -24,14 +26,16 @@ import { TaskComponent } from './components/task/task.component';
     RegisterComponent,
     NavbarComponent,
     NoteComponent,
-    TaskComponent
+    TaskComponent,
+    DragDropComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularMatModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
