@@ -120,7 +120,7 @@ public class UserController {
 		List<TaskDTO> tasksList = new ArrayList<>();
 		
 		for(Task t :user.getTasks()) {
-			tasksList.add(new TaskDTO(t.getName(),t.isDone()));
+			tasksList.add(new TaskDTO(t.getId(),t.getName(),t.isDone()));
 		}
 		return new ResponseEntity<>(tasksList,HttpStatus.OK);
 	}
