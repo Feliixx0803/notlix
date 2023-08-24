@@ -23,6 +23,7 @@ public class Task implements Serializable{
 	
 	private String name;
 	
+	
 	private boolean isDone;
 	
 	@ManyToOne
