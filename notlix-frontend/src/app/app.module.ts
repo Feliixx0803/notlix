@@ -13,8 +13,7 @@ import {AngularMatModule} from "./modules/angular-mat/angular-mat.module";
 import { NavbarComponent } from './ui-controls/navbar/navbar.component';
 import {HttpClientModule} from "@angular/common/http";
 import { NoteComponent } from './components/note/note.component';
-import { TaskComponent } from './components/task/task.component';
-import { DragDropComponent } from './components/task/drag-drop/drag-drop.component';
+import { TaskComponent } from './components/task/drag-drop/task.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
@@ -26,8 +25,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     RegisterComponent,
     NavbarComponent,
     NoteComponent,
-    TaskComponent,
-    DragDropComponent
+    TaskComponent
   ],
   imports: [
     BrowserModule,
