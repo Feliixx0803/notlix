@@ -84,7 +84,18 @@ public class TaskController {
 		return new ResponseEntity<>(taskUpdate, HttpStatus.OK);
 	}
 	
-	
+	@PutMapping("/updateState")
+	public ResponseEntity<Task> updateTaskState(
+			@RequestBody Long id
+			){
+		Task task = taskService.findTaskById(id);
+		task.setDone(!task.isDone());
+		System.out.println(task.isDone());
+		
+		Task taskUpdate = taskService.updateTask(task);
+		
+		return new ResponseEntity<>(taskUpdate, HttpStatus.OK);
+	}
 	
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> deleteTask(

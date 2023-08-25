@@ -50,8 +50,6 @@ export class TaskComponent implements OnInit, OnDestroy{
           event.currentIndex);
 
       this.taskService.updateTask(draggedItem).subscribe();
-
-
     }
   }
 }
