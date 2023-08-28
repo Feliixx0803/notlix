@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import {TaskDto} from "../../../models/DTO/task-dto";
 import {Subscription} from "rxjs";
@@ -8,7 +8,6 @@ import {newTaskDialog} from "../../../modules/angular-mat/components/mat-dialog/
 import {MatDialog} from "@angular/material/dialog";
 import {NewTask} from "../../../models/DTO/new-task";
 import {PopUpService} from "../../../services/PopUp/pop-up.service";
-import {TaskModel} from "../../../models/task/task-model";
 
 @Component({
   selector: 'app-drag-drop',
