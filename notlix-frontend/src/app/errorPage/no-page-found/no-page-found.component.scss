@@ -26,10 +26,18 @@ button{
   border: none;
   background: rgb(5, 129, 245);
   color: white;
+  font-size: 19px;
 }
 
 @media screen and (max-width:630px){
   h1{
-    font-size: 16px;
+    font-size: 17px;
+    max-width: 80%;
+  }
+  img{
+    min-width: 90%;
+  }
+  button{
+    font-size: 17px;
   }
 }

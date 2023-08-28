@@ -3,7 +3,7 @@ import {NavbarService} from "../../services/navbarService/navbarService";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/authService/auth.service";
-import {PopUpService} from "../../services/PopUp/pop-up.service";
+import {PopUpService} from "../../services/PopUpService/pop-up.service";
 
 @Component({
   selector: 'app-login',

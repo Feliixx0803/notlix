@@ -48,3 +48,20 @@
   opacity: 0;
 }
 
+
+.newTask{
+  color:white;
+  background: blue;
+  transition: background 0.3s ease-in-out;
+  padding: 10px 30px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+
+}
+
+.newTask:hover {
+  background-color: #020293;
+}
+

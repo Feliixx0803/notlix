@@ -7,7 +7,7 @@ import {TaskService} from "../../../services/task/task.service";
 import {newTaskDialog} from "../../../modules/angular-mat/components/mat-dialog/newTaskDialog/new-task-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {NewTask} from "../../../models/DTO/new-task";
-import {PopUpService} from "../../../services/PopUp/pop-up.service";
+import {PopUpService} from "../../../services/PopUpService/pop-up.service";
 
 @Component({
   selector: 'app-drag-drop',
@@ -18,6 +18,7 @@ export class TaskComponent implements OnInit, OnDestroy{
   subscriptions : Subscription = new Subscription();
   todo :TaskDto[] = [];
   done :TaskDto[] = [];
+  loading :boolean = true;
 
   constructor(private userService :UserService,
               private taskService :TaskService,

@@ -7,7 +7,7 @@ import {NoteService} from "../../services/noteService/note.service";
 import {MatDialog} from "@angular/material/dialog";
 import {newNoteDialog} from "../../modules/angular-mat/components/mat-dialog/newNoteDialog/new-note-dialog.component";
 import {FormControl} from "@angular/forms";
-import {PopUpService} from "../../services/PopUp/pop-up.service";
+import {PopUpService} from "../../services/PopUpService/pop-up.service";
 
 @Component({
   selector: 'app-noteService',
