@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {UserService} from "../../services/userService/user.service";
-import {lastValueFrom,Subscription} from "rxjs";
+import {lastValueFrom, map, Observable, startWith, Subscription} from "rxjs";
 import {NoteDTO} from "../../models/DTO/note-dto";
 import {NoteService} from "../../services/noteService/note.service";
 import {MatDialog} from "@angular/material/dialog";
@@ -21,6 +21,8 @@ export class NoteComponent implements OnInit, OnDestroy{
 
   searchField = new FormControl('');
 
+  notes :NoteDTO[] = [];
+  filteredOptions$!: Observable<NoteDTO[]>;
   constructor(private http :HttpClient,
               private userService :UserService,
               public notesService :NoteService,
@@ -31,22 +33,39 @@ export class NoteComponent implements OnInit, OnDestroy{
     const email :any= localStorage.getItem('user');
     this.getUserNotes(email);
 
-    this.notesService.updateFilteredOptions(this.searchField);
+    this.notesService.newNoteData$.subscribe(newNote =>{
+      this.createNote(newNote, email);
+    })
+
+    this.updateFilteredOptions(this.searchField);
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
-    this.notesService.notes = [];
+    this.notes = [];
   }
 
 
+
+  updateFilteredOptions(searchField :any) :void {
+    this.filteredOptions$ = searchField.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || ''))
+    );
+  }
+
+  private _filter(value: any): NoteDTO[] {
+    const filterNote = value.toLowerCase();
+
+    return this.notes.filter(note => note.title.toLowerCase().includes(filterNote));
+  }
   async getUserNotes (email :string){
     let notesBack = await lastValueFrom(this.userService.getUserNotes(email));
 
     notesBack.forEach( note => {
-      this.notesService.notes.push(note);
+      this.notes.push(note);
     })
-    console.log(this.notesService.notes)
+    console.log(this.notes)
   }
 
 
@@ -77,14 +96,27 @@ export class NoteComponent implements OnInit, OnDestroy{
   }
 
   deleteNote(n: NoteDTO) {
-    this.notesService.deleteNote(n.title).subscribe(()=>{
+    this.notesService.deleteNote(n.title,this.notes).subscribe(()=>{
       this.isSelected = false;
       this.popUpService.showPopup('Nota eliminada con éxito');
 
 
       //As we are emitting the values of the array notes, when there is a change in the array notes
       // we must update and reflect this change in the observable as well.
-      this.notesService.updateFilteredOptions(this.searchField);
+      this.updateFilteredOptions(this.searchField);
     });
+  }
+
+  private createNote(newNote: NoteDTO, email: any) {
+    this.notesService.addNewNote(newNote, email).subscribe(
+      ()=>{
+        this.notes.push(newNote);
+        this.updateFilteredOptions(this.searchField);
+      },
+      (error) => {
+        this.popUpService.showPopup("Rellene todos los campos. No pueden existir notas con el mismo nombre");
+        console.error(`Hubo un error al crear la nota: ${error}`)
+      },
+      ()=> console.log("Nota creada con exito"))
   }
 }

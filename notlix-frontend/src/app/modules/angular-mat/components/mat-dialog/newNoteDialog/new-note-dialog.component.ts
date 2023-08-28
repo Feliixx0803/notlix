@@ -18,21 +18,12 @@ export class newNoteDialog {
               private popUpService :PopUpService) {
   }
   createNote() {
-    let actualUser = localStorage.getItem('user');
+    //let actualUser = localStorage.getItem('user');
     let newNote :NoteDTO = {
       title: this.title,
       content: this.content
     }
 
-    this.notesService.addNewNote(newNote, actualUser).subscribe(
-      ()=>{
-        this.notesService.notes.push(newNote);
-        this.notesService.updateFilteredOptions(this.searchField);
-      },
-      (error) => {
-        this.popUpService.showPopup("Rellene todos los campos. No pueden existir notas con el mismo nombre");
-        console.error(`Hubo un error al crear la nota: ${error}`)
-      },
-      ()=> console.log("Nota creada con exito"))
+    this.notesService.newNoteData$.emit(newNote);
   }
 }

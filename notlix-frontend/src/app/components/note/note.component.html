@@ -12,8 +12,8 @@
       </form>
 
     <!--Notes in the left panel-->
-     <ng-container *ngIf="notesService.notes.length; else noNotes">
-        <div class="notesTitle" *ngFor="let n of notesService.filteredOptions$ | async">
+     <ng-container *ngIf="notes.length; else noNotes">
+        <div class="notesTitle" *ngFor="let n of filteredOptions$ | async">
           <button (click)="deleteNote(n)">
             <img src="assets/delete.svg" class="icon" alt="borrar nota" />
           </button>
