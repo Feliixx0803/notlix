@@ -21,6 +21,7 @@ public class Task implements Serializable{
     @Column(nullable = false, updatable = false)
 	private Long id;
 	
+	@Column(unique = true)
 	private String name;
 	
 	

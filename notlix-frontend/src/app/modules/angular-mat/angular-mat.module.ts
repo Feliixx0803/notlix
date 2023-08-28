@@ -9,10 +9,12 @@ import {MatInputModule} from "@angular/material/input";
 import {MatDialogModule} from '@angular/material/dialog';
 import { newNoteDialog } from './components/mat-dialog/newNoteDialog/new-note-dialog.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {newTaskDialog} from "./components/mat-dialog/newTaskDialog/new-task-dialog.component";
 
 @NgModule({
   declarations: [
-    newNoteDialog
+    newNoteDialog,
+    newTaskDialog
   ],
   imports: [
     CommonModule,

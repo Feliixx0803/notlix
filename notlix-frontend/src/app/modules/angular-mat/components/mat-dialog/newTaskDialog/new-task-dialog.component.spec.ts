@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { newNoteDialog } from './new-note-dialog.component';
+import { newNoteDialog } from './new-task-dialog.component';
 
 describe('MatDialogComponent', () => {
   let component: newNoteDialog;

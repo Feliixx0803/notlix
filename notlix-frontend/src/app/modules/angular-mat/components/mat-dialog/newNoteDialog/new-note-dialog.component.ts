@@ -17,7 +17,7 @@ export class newNoteDialog {
               private notesService :NoteService,
               private popUpService :PopUpService) {
   }
-  newNote() {
+  createNote() {
     let actualUser = localStorage.getItem('user');
     let newNote :NoteDTO = {
       title: this.title,

@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Nueva tarea</h1>
+  <div mat-dialog-content class="content">
+    <div class="group">
+      <label for="name">Tarea:</label>
+      <input type="text" maxlength="100" [(ngModel)]="name" id="name" required="required"/>
+    </div>
+  </div>
+  <div mat-dialog-actions class="actions">
+    <button mat-button mat-dialog-close (click)="newTask()">Crear</button>
+  </div>
+</div>

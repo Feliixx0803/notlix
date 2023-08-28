@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.notlix.back.dtos.TaskDTO;
 import com.notlix.back.models.Task;
 import com.notlix.back.models.User;
 import com.notlix.back.services.TaskService;
@@ -41,33 +42,30 @@ public class TaskController {
 		return new ResponseEntity<>(tasks, HttpStatus.OK);
 	}
 	
-	@PostMapping("/add")
+	@PostMapping("/add/{email}")
 	public ResponseEntity<String> addTask(
-			@RequestBody Task taskData
+			@RequestBody TaskDTO newTaskData,
+			@PathVariable String email
 			){
 		try {
+			
+			if (newTaskData.getName() == "") {
+				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			}
 				
 			Task task = new Task();
-			User user = userService.findUserById(taskData.getUser().getId());
+			User user = userService.findUserByEmail(email);
 			task.setUser(user);
-			task.setName(taskData.getName());
+			task.setName(newTaskData.getName());
 			
 			Task newTask = taskService.addTask(task);
 			user.getTasks().add(newTask);
 			userService.updateUser(user);
 			
-			return new ResponseEntity<String>("" + newTask,HttpStatus.CREATED);
+			return new ResponseEntity<String>("" + newTask.getId(),HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
-	}
-	
-	@GetMapping("/find/{id}")
-	public ResponseEntity<Task> findTaskById(
-			@PathVariable("id") Long id
-			){
-		Task task = taskService.findTaskById(id);
-		return new ResponseEntity<Task> (task, HttpStatus.OK);
 	}
 	
 	@PutMapping("/update/{id}")

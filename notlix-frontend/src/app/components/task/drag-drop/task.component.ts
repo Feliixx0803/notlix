@@ -4,6 +4,11 @@ import {TaskDto} from "../../../models/DTO/task-dto";
 import {Subscription} from "rxjs";
 import {UserService} from "../../../services/userService/user.service";
 import {TaskService} from "../../../services/task/task.service";
+import {newTaskDialog} from "../../../modules/angular-mat/components/mat-dialog/newTaskDialog/new-task-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
+import {NewTask} from "../../../models/DTO/new-task";
+import {PopUpService} from "../../../services/PopUp/pop-up.service";
+import {TaskModel} from "../../../models/task/task-model";
 
 @Component({
   selector: 'app-drag-drop',
@@ -12,12 +17,13 @@ import {TaskService} from "../../../services/task/task.service";
 })
 export class TaskComponent implements OnInit, OnDestroy{
   subscriptions : Subscription = new Subscription();
-  //tasks :TaskDto[] = [];
   todo :TaskDto[] = [];
   done :TaskDto[] = [];
 
   constructor(private userService :UserService,
-              private taskService :TaskService) {
+              private taskService :TaskService,
+              private dialog :MatDialog,
+              private popUpService :PopUpService) {
   }
 
   ngOnInit(): void {
@@ -29,8 +35,11 @@ export class TaskComponent implements OnInit, OnDestroy{
         }else {
           this.todo.push(task);
         }
-
       })
+    });
+
+    this.taskService.newTaskData$.subscribe(newTask =>{
+      this.createTask(newTask, email);
     });
   }
 
@@ -38,6 +47,8 @@ export class TaskComponent implements OnInit, OnDestroy{
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
+
+
 
   drop(event: CdkDragDrop<TaskDto[]>): void {
     if (event.previousContainer === event.container) {
@@ -51,5 +62,30 @@ export class TaskComponent implements OnInit, OnDestroy{
 
       this.taskService.updateTask(draggedItem).subscribe();
     }
+  }
+
+  openDialog(){
+    this.dialog.open(newTaskDialog, {
+      height: '400px',
+      width: '600px',
+    });
+  }
+
+  private createTask(newTask: NewTask, email: any) {
+    this.taskService.addNewTask(newTask, email).subscribe(
+      (id)=>{
+       const task :TaskDto = {
+         id: id,
+         name :newTask.name,
+         done :newTask.done
+       }
+
+        this.todo.push(task);
+      },
+      (error) => {
+        this.popUpService.showPopup("Introduzca el nombre de la tarea, por favor. Debe ser único.");
+        console.error(`Hubo un error al crear la tarea: ${error.error}`)
+      },
+      ()=> console.log("Tarea creada con exito"))
   }
 }
