@@ -8,7 +8,9 @@
         <input type="search" id="searchField" placeholder="Buscar notas" spellcheck="false" [formControl]="searchField">
 
         <!--New note button-->
-        <button class="newNoteBtn" (click)="openDialog()">Nueva nota</button>
+        <button class="newNoteBtn" (click)="openDialog()">
+           Crear nota
+        </button>
       </form>
 
     <!--Notes in the left panel-->
@@ -22,7 +24,7 @@
      </ng-container>
       <ng-template #noNotes>
         <div class="notesTitle">
-          <button>No hay notas, crea una. (PROVISIONAL)</button>
+          <button>No hay notas, crea una.</button>
         </div>
       </ng-template>
   </aside>

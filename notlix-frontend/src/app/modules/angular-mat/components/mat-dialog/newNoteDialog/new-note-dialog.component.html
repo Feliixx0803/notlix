@@ -2,7 +2,7 @@
   <h1>Nueva nota</h1>
   <div mat-dialog-content class="content">
     <div class="group">
-      <label for="title">Titulo</label>
+      <label for="title" class="title">Titulo</label>
       <input type="text" maxlength="15" [(ngModel)]="title" id="title" required="required"/>
     </div>
     <div class="group">
@@ -11,6 +11,6 @@
     </div>
   </div>
   <div mat-dialog-actions class="actions">
-    <button mat-button mat-dialog-close (click)="createNote()">Crear</button>
+    <button class="actionBtn" mat-button mat-dialog-close (click)="createNote()">Crear</button>
   </div>
 </div>

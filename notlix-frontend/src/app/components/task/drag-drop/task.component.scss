@@ -1,3 +1,9 @@
+.icon{
+  width: 1.6rem;
+  cursor:pointer;
+  margin-right: 5px;
+}
+
 .container {
   width: 900px;
   max-width: 100%;
@@ -22,7 +28,7 @@
   cursor: move;
   background: white;
   color: black;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .list-item:last-child {

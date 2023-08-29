@@ -14,7 +14,10 @@
           <ng-container *ngIf="todo.length === 0">
             <h4>¡Enhorabuena! No tienes tareas pendientes.</h4>
           </ng-container>
-          <div class="list-item" *ngFor="let item of todo" cdkDrag [cdkDragData]="item">{{item.name}}</div>
+          <div class="list-item" *ngFor="let item of todo" cdkDrag [cdkDragData]="item">
+            <img src="/assets/delete.svg" class="icon" (click)="deleteTask(item)" alt="borrar">
+            {{item.name}}
+          </div>
         </div>
       </div>
       <div class="col-sm-12 col-md-6">
@@ -24,7 +27,10 @@
           <ng-container *ngIf="done.length === 0">
             <h4>Aún no has completado ninguna tarea. ¡A trabajar!</h4>
           </ng-container>
-          <div class="list-item" *ngFor="let item of done" cdkDrag [cdkDragData]="item">{{item.name}}</div>
+          <div class="list-item" *ngFor="let item of done" cdkDrag [cdkDragData]="item">
+            <img src="/assets/delete.svg" class="icon" (click)="deleteTask(item)" alt="borrar">
+            {{item.name}}
+          </div>
         </div>
       </div>
     </div>

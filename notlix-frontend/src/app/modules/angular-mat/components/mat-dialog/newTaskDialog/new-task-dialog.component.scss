@@ -38,4 +38,17 @@
     bottom: 30px;
     left:5px;
   }
+
+  .actionBtn{
+    margin-top: 30px;
+    color:white;
+    background: blue;
+    transition: background 0.3s ease-in-out;
+    padding: 12px 50px;
+    border-radius: 5px;
+  }
+
+  .actionBtn:hover {
+    background-color: #020293;
+  }
 }

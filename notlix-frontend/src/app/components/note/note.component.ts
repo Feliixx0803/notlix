@@ -80,7 +80,7 @@ export class NoteComponent implements OnInit, OnDestroy{
   openDialog(){
     this.dialog.open(newNoteDialog, {
       height: '400px',
-      width: '600px',
+      width: '550px',
       data:this.searchField
     });
   }
@@ -99,7 +99,6 @@ export class NoteComponent implements OnInit, OnDestroy{
     this.notesService.deleteNote(n.title,this.notes).subscribe(()=>{
       this.isSelected = false;
       this.popUpService.showPopup('Nota eliminada con éxito');
-
 
       //As we are emitting the values of the array notes, when there is a change in the array notes
       // we must update and reflect this change in the observable as well.

@@ -66,8 +66,8 @@ export class TaskComponent implements OnInit, OnDestroy{
 
   openDialog(){
     this.dialog.open(newTaskDialog, {
-      height: '400px',
-      width: '600px',
+      height: '280px',
+      width: '500px',
     });
   }
 
@@ -87,5 +87,21 @@ export class TaskComponent implements OnInit, OnDestroy{
         console.error(`Hubo un error al crear la tarea: ${error.error}`)
       },
       ()=> console.log("Tarea creada con exito"))
+  }
+
+  /**
+   * Deletes a task and updates the array which had the deleted task
+   * @param task
+   */
+  deleteTask(task: TaskDto) {
+    this.taskService.deleteTask(task).subscribe(()=>{
+      let index = this.todo.findIndex(t => t.id === task.id);
+
+      if (index !== -1) {
+        this.todo.splice(index, 1);
+      } else {
+        this.done.splice(index, 1);
+      }
+    });
   }
 }

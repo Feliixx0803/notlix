@@ -22,4 +22,8 @@ export class TaskService {
   addNewTask(task :NewTask, email :any) :Observable<number>{
     return this.http.post<number>(`${this.apiUrl}/task/add/${email}`,task);
   }
+
+  deleteTask(task: TaskDto) {
+    return this.http.delete(`${this.apiUrl}/task/delete/${task.id}`);
+  }
 }

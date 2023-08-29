@@ -31,12 +31,33 @@
     border: none;
     outline: none;
     border-bottom: 1px solid #706f6f;
+    width: 100%;
   }
 
-  label{
+  .title{
     cursor:pointer;
     position:absolute;
     bottom: 30px;
     left:5px;
+  }
+
+  textarea{
+    height: 100px;
+    width: 100%;
+    outline:none;
+    border: 1px solid gray;
+    min-height: 90px;
+  }
+
+  .actionBtn{
+    color:white;
+    background: blue;
+    transition: background 0.3s ease-in-out;
+    padding: 12px 50px;
+    border-radius: 5px;
+  }
+
+  .actionBtn:hover {
+    background-color: #020293;
   }
 }
