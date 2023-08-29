@@ -65,7 +65,6 @@ export class NoteComponent implements OnInit, OnDestroy{
     notesBack.forEach( note => {
       this.notes.push(note);
     })
-    console.log(this.notes)
   }
 
 

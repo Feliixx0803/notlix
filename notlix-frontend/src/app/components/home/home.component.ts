@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit, OnDestroy{
   ngOnInit(): void {
     this.subscription = this.userService.userLogged.subscribe((isLogged :boolean) =>{
       this.userLogged = isLogged;
-      console.log("log",isLogged);
     })
 
     if(localStorage.getItem('user')){
