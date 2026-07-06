@@ -25,7 +25,7 @@ import com.notlix.back.services.UserService;
 
 @RestController
 @RequestMapping("/task")
-@CrossOrigin(origins = "http://localhost:4200")
+
 public class TaskController {
 	private final TaskService taskService;
 	private final UserService userService;

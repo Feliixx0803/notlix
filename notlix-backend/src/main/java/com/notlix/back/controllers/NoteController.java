@@ -24,7 +24,6 @@ import com.notlix.back.services.UserService;
 
 @RestController
 @RequestMapping("/note")
-@CrossOrigin(origins = "http://localhost:4200")
 public class NoteController {
 	private final NoteService noteService;
 	private final UserService userService;

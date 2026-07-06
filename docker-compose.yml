@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  # Contenedor 1: Base de datos MySQL
+  notlix-db:
+    image: mysql:8.0
+    container_name: notlix-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: notlix
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  # Contenedor 2: Backend (Spring Boot)
+  notlix-backend:
+    build: ./notlix-backend
+    container_name: notlix-backend
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    environment:
+      # Sobrescribimos las variables de tu application.properties de forma dinámica
+      - SPRING_DATASOURCE_URL=jdbc:mysql://notlix-db:3306/notlix
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=rootpassword
+    depends_on:
+      - notlix-db
+
+  # Contenedor 3: Frontend (Angular + Nginx)
+  notlix-frontend:
+    build: ./notlix-frontend
+    container_name: notlix-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - notlix-backend
+
+volumes:
+  mysql_data:

@@ -20,7 +20,7 @@ import com.notlix.back.services.RoleService;
 
 @RestController
 @RequestMapping("/role")
-@CrossOrigin(origins = "http://localhost:4200")
+
 public class RoleController {
 	
 	private final RoleService roleService;
