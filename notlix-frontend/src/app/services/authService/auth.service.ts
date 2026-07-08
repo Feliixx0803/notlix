@@ -14,10 +14,10 @@ export class AuthService {
   }
 
   login(body: any) {
-    return this.http.post<UserDTO>('${environment.apiUrl}/login', body, {responseType: 'json'})
+    return this.http.post<UserDTO>(`${environment.apiUrl}/login`, body, {responseType: 'json'})
   }
 
   register(body :any){
-    return  this.http.post('${environment.apiUrl}/register', body, { responseType: 'text' })
+    return  this.http.post(`${environment.apiUrl}/register`, body, { responseType: 'text' })
   }
 }
