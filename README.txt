@@ -1,5 +1,9 @@
 NOTLIX
 Aplicación full-stack de gestión de notas y tareas personales.
+
+--QUICK START--
+Aplicación completamente dockerizada, para ejecutar rapidamente en local basta con clonar el repositorio y ejecutar el comando docker compose up --build dentro de la carpeta del proyecto
+
 Demo en vivo: https://notlix.vercel.app
 
 Frontend: Angular 16, SCSS, Angular Material.
